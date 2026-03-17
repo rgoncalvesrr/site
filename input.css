@@ -2,55 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Carregamento Local de Fontes (Performance LCP) */
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 300 700;
-    font-display: swap;
-    src: url('/assets/fonts/inter.woff2') format('woff2');
+@layer base {
+    :root {
+        /* Valores RGB separados por VÍRGULAS (Imune a erros de minificação) */
+        --color-peau-light: 250, 247, 242;
+        --color-peau-dark: 44, 42, 41;
+        --color-peau-gray: 92, 89, 87;
+        --color-peau-card: 255, 255, 255;
+        --color-peau-inverse: 44, 42, 41;
+        --color-peau-rose: 164, 14, 76;
+        --color-peau-rosedark: 130, 11, 60;
+    }
+
+    /* O seletor :root.dark é mais forte que .dark e impede o minificador de o ignorar */
+    :root.dark {
+        /* Valores RGB para o tema escuro separados por VÍRGULAS */
+        --color-peau-light: 18, 18, 18;
+        --color-peau-dark: 245, 245, 245;
+        --color-peau-gray: 163, 163, 163;
+        --color-peau-card: 30, 30, 30;
+        --color-peau-inverse: 10, 10, 10;
+        --color-peau-rose: 216, 40, 115;
+        --color-peau-rosedark: 164, 14, 76;
+    }
+
+    body {
+        @apply transition-colors duration-300;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(var(--color-peau-light), 1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(var(--color-peau-rose), 1);
+        border-radius: 4px;
+    }
 }
 
-@font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 300 700;
-    font-display: swap;
-    src: url('/assets/fonts/space-grotesk.woff2') format('woff2');
-}
+@layer components {
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
 
-body {
-    font-family: 'Inter', sans-serif;
-}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Space Grotesk', sans-serif;
-}
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-/* Suavização de rolagem para os links do menu */
-html {
-    scroll-behavior: smooth;
-}
+    /* FAQ Styles */
+    details summary::-webkit-details-marker {
+        display: none;
+    }
 
-/* Estilização extra para a scrollbar do modal */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
+    details[open] summary i {
+        transform: rotate(180deg);
+    }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
+    /* WhatsApp Float Animation */
+    .btn-float-wa {
+        animation: pulse-wa 2s infinite;
+    }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 10px;
-}
+    @keyframes pulse-wa {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
 
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #475569;
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+    }
 }

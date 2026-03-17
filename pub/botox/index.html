@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxina Botulínica | Peau Santé - Estética Avançada</title>
+
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Dê adeus às rugas mantendo a sua naturalidade na Peau Santé. Especialistas em Toxina Botulínica preventiva e corretiva em Santo André - SP. Agende a sua consulta!">
+    <meta name="keywords"
+        content="Botox, Toxina Botulínica, Harmonização Facial, Estética Santo André, Rejuvenescimento facial, Clínica de Estética, Peau Santé, Botox preventivo, Rugas">
+    <meta name="author" content="Peau Santé">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Meta / Facebook / Instagram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peausante.com.br/botox">
+    <meta property="og:title" content="Toxina Botulínica | Peau Santé - Estética Avançada">
+    <meta property="og:description"
+        content="Suavize linhas de expressão com naturalidade. Especialistas em Botox em Santo André - SP.">
+    <meta property="og:image" content="https://peausante.com.br/assets/images/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://peausante.com.br/botox">
+    <meta property="twitter:title" content="Botox Natural | Peau Santé">
+    <meta property="twitter:description"
+        content="Especialistas em Rejuvenescimento em Santo André - SP. Agende a sua consulta.">
+    <meta property="twitter:image" content="https://peausante.com.br/assets/images/logo.png">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics / Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-SEUIDAQUI"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-SEUIDAQUI');
+        gtag('config', 'G-38GQYR6DZ5');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1234567890');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1234567890&ev=PageView&noscript=1" /></noscript>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS Minificado (Contém todos os estilos agora) -->
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        // Script de detecção de tema e fonte (Mantido aqui para evitar FOUC - Flash of Unstyled Content)
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-peau-light text-peau-dark font-sans antialiased transition-colors duration-300">
+
+    <!-- Navbar -->
+    <header
+        class="fixed w-full bg-peau-card/90 backdrop-blur-md z-50 border-b border-peau-rose/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
+                        class="h-14 w-auto object-contain drop-shadow-md transition-all block dark:hidden">
+                    <img src="/assets/images/logo.png" alt="Logo Peau Santé"
+                        class="h-14 w-auto object-contain drop-shadow-md transition-all hidden dark:block">
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#beneficios"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Benefícios</a>
+                    <a href="#areas" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Áreas
+                        de Aplicação</a>
+                    <a href="#faq" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas
+                        Frequentes</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden md:flex items-center gap-1 bg-peau-light rounded-full px-2 py-1 border border-peau-rose/20 transition-colors">
+                        <button onclick="changeFontSize(-5)" class="p-1 text-peau-gray hover:text-peau-rose"
+                            aria-label="Diminuir fonte">A-</button>
+                        <button onclick="changeFontSize(0, true)"
+                            class="p-1 text-peau-gray hover:text-peau-rose text-sm font-bold"
+                            aria-label="Tamanho padrão">A</button>
+                        <button onclick="changeFontSize(5)" class="p-1 text-peau-gray hover:text-peau-rose text-lg"
+                            aria-label="Aumentar fonte">A+</button>
+                        <div class="w-px h-4 bg-peau-rose/30 mx-1"></div>
+                        <button onclick="toggleTheme()" class="p-1 text-peau-gray hover:text-peau-rose"
+                            aria-label="Alternar tema">
+                            <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
+                            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                        </button>
+                    </div>
+
+                    <a href="#"
+                        onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta para aplicação de Botox.')"
+                        class="hidden md:flex items-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Agendar Consulta
+                    </a>
+
+                    <button class="md:hidden p-2 text-peau-dark" id="mobile-menu-btn" aria-label="Abrir menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden bg-peau-card border-t border-peau-rose/20 absolute w-full transition-colors"
+            id="mobile-menu">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
+                <a href="#beneficios"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Benefícios</a>
+                <a href="#areas"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Áreas
+                    de Aplicação</a>
+                <a href="#faq"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Dúvidas
+                    Frequentes</a>
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta para aplicação de Botox.')"
+                    class="block mt-4 text-center bg-peau-rose text-white px-3 py-2 rounded-md font-medium">Agendar
+                    Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+                <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-rose/10 text-peau-rosedark font-medium text-sm">
+                        <i data-lucide="award" class="w-4 h-4"></i> Especialistas em Rejuvenescimento
+                    </div>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-peau-dark">
+                        Dê adeus às rugas mantendo a sua <span class="text-peau-rose italic">naturalidade</span>.
+                    </h1>
+                    <p class="text-lg text-peau-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        A Toxina Botulínica suaviza linhas de expressão, previne o envelhecimento precoce e devolve o
+                        aspecto descansado ao seu rosto com elegância.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#"
+                            onclick="openLeadModal(event, 'Olá, gostaria de saber mais sobre a consulta para aplicação de Botox.')"
+                            class="flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsappdark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Falar com Especialista
+                        </a>
+                        <a href="#areas"
+                            class="flex items-center justify-center gap-2 bg-peau-card border border-peau-rose/30 text-peau-dark hover:bg-peau-light px-8 py-4 rounded-full font-medium text-lg transition-all">
+                            Ver Áreas de Aplicação
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative">
+                    <div
+                        class="absolute inset-0 bg-peau-rose/20 rounded-t-full rounded-b-[40px] transform rotate-3 scale-105">
+                    </div>
+                    <div
+                        class="relative rounded-t-full rounded-b-[40px] shadow-2xl w-full h-[500px] lg:h-[600px] border-4 border-peau-card transition-colors overflow-hidden group">
+                        <img src="/assets/images/capa-tema-claro.jpg"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block dark:hidden">
+                        <img src="/assets/images/capa-tema-escuro.jpg"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hidden dark:block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Aplicação -->
+    <section class="py-20 bg-peau-light transition-colors" id="areas">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Tratamentos</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Onde podemos aplicar?
+                </h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">A Toxina Botulínica não serve apenas para a testa. Descubra
+                    as principais áreas que tratamos para harmonizar o seu rosto.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full">
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="scan-face" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2">Terço Superior</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Testa:</strong> Suaviza as linhas
+                            horizontais.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Glabela:</strong> Ruguinhas de
+                            "braveza".</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Pés de Galinha:</strong> Ao redor dos
+                            olhos.</li>
+                    </ul>
+                    <a href="#" onclick="openLeadModal(event, 'Interesse: Terço Superior')"
+                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">Saber
+                        mais</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 bg-peau-rose text-white text-xs font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Mais Procurado</div>
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="smile" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2">Sorriso & Nariz</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Bunny Lines:</strong> Rugas no nariz.
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Sorriso Gengival:</strong> Redução da
+                            gengiva exposta.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Queixo:</strong> Suavização de
+                            celulites mentuais.</li>
+                    </ul>
+                    <a href="#" onclick="openLeadModal(event, 'Interesse: Sorriso e Nariz')"
+                        class="w-full block text-center bg-peau-rose hover:bg-peau-rosedark text-white font-medium py-3 rounded-xl transition-colors mt-auto shadow-md">Agendar
+                        Agora</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full">
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="person-standing" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2">Contornos</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Pescoço:</strong> Definição de
+                            contorno.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Hiperidrose:</strong> Redução de suor
+                            excessivo.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
+                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Bruxismo:</strong> Alívio de tensão
+                            mandibular.</li>
+                    </ul>
+                    <a href="#" onclick="openLeadModal(event, 'Interesse: Contornos')"
+                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">Saber
+                        mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Reais -->
+    <section class="py-20 bg-peau-card transition-colors" id="resultados">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Antes e Depois</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Resultados Reais</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Confira a transformação e a naturalidade alcançadas em
+                    pacientes reais da Peau Santé.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Resultado 1: Glabela -->
+                <div
+                    class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/peausante-glabela.jpg" alt="Antes e Depois - Região da Glabela"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span
+                            class="absolute top-4 left-4 bg-peau-dark/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                        <span
+                            class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-peau-rose"></i>
+                            <h4 class="font-bold text-peau-dark text-lg">Região da Glabela</h4>
+                        </div>
+                        <p class="text-peau-gray text-sm leading-relaxed">Suavização completa da "ruga da braveza" entre
+                            as sobrancelhas, devolvendo um aspecto mais descansado e sereno ao olhar.</p>
+                    </div>
+                </div>
+
+                <!-- Resultado 2: Testa -->
+                <div
+                    class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/peausante-linhas-frontais.jpg"
+                            alt="Antes e Depois - Linhas Frontais"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span
+                            class="absolute top-4 left-4 bg-peau-dark/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                        <span
+                            class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-peau-rose"></i>
+                            <h4 class="font-bold text-peau-dark text-lg">Linhas Frontais (Testa)</h4>
+                        </div>
+                        <p class="text-peau-gray text-sm leading-relaxed">Eliminação das linhas horizontais profundas da
+                            testa, mantendo a mobilidade das sobrancelhas para um resultado elegante.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-peau-dark font-medium mb-6">Impressione-se com os seus próprios resultados.</p>
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, vi os resultados de antes e depois e quero agendar a minha consulta para aplicação de Botox!')"
+                    class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    Quero este resultado
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section class="py-20 bg-peau-light transition-colors" id="beneficios">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2">
+                    <img src="/assets/images/peausante-porque.jpg" alt="Por que escolher a Peau Santé"
+                        class="rounded-[40px] shadow-2xl w-full object-cover">
+                </div>
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <div>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mb-4">Por que fazer o Botox
+                            na Peau Santé?</h2>
+                        <p class="text-peau-gray leading-relaxed">
+                            Na Peau Santé, focamos em ressaltar a sua beleza, não em alterá-la. Acreditamos no
+                            <strong>Botox Preventivo e Corretivo</strong> aplicado com a dosagem exata para manter suas
+                            expressões vívidas, porém sem marcar a pele.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="mt-1 bg-white dark:bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-peau-dark text-lg">Segurança e Produtos Premium</h4>
+                                <p class="text-peau-gray text-sm mt-1">Trabalhamos apenas com marcas consagradas no
+                                    mercado mundial, garantindo maior durabilidade e resultados previsíveis.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 bg-white dark:bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-peau-dark text-lg">Efeito Preventivo</h4>
+                                <p class="text-peau-gray text-sm mt-1">Começar antes das rugas se tornarem profundas
+                                    mantém a pele lisa e jovem por muito mais tempo.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 bg-white dark:bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-peau-dark text-lg">Autoestima Renovada</h4>
+                                <p class="text-peau-gray text-sm mt-1">Sinta-se confiante com uma aparência descansada,
+                                    aliviando o aspecto de estresse e cansaço.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dúvidas Frequentes (FAQ) -->
+    <section class="py-20 bg-peau-card transition-colors" id="faq">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">FAQ</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Dúvidas Frequentes</h2>
+                <p class="text-peau-gray">Tudo o que você precisa saber antes de realizar o seu procedimento.</p>
+            </div>
+
+            <div class="space-y-4">
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Quanto tempo dura o efeito do Botox?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        O efeito costuma durar entre 4 a 6 meses, variando conforme o organismo de cada paciente, o
+                        estilo de vida e a força muscular da área tratada. Após esse período, uma nova aplicação é
+                        recomendada para manter os resultados.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">A aplicação é dolorosa?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        O desconforto é mínimo. Utilizamos agulhas extremamente finas e agimos com delicadeza para
+                        garantir uma experiência tranquila.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Quanto tempo leva para ver os resultados?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Os primeiros sinais aparecem em 48 a 72 horas, com o resultado completo após 15 dias.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">O rosto pode ficar artificial?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        De forma alguma. Na Peau Santé, priorizamos a naturalidade, suavizando rugas sem retirar o seu
+                        movimento natural.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-24 bg-peau-rose relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mb-6">Pronta para elevar sua
+                autoestima?</h2>
+            <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Agende agora a sua consulta personalizada em Santo
+                André e descubra o plano ideal para realçar a sua melhor versão.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, li as dúvidas frequentes e quero agendar minha consulta para aplicação de Botox!')"
+                    class="bg-white text-peau-rose hover:bg-peau-light px-10 py-5 rounded-full font-bold text-xl transition-all shadow-xl hover:-translate-y-1">
+                    Agendar minha Consulta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-peau-card border-t border-peau-rose/20 pt-16 pb-8 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-peau-rose/10 pb-12">
+                <div>
+                    <img src="/assets/images/logo-tema-claro.png" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
+                        alt="Peau Santé">
+                    <img src="/assets/images/logo.png" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
+                        alt="Peau Santé">
+                    <p class="text-peau-gray text-sm mt-4">Centro de Biomedicina e Estética Avançada. Referência em
+                        tratamentos focados na naturalidade.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-peau-dark mb-4 uppercase text-sm tracking-widest">Contato</h4>
+                    <p class="text-peau-gray text-sm">Av. Industrial, 780 - Jardim<br>Santo André - SP, 09080-500</p>
+                    <p class="text-peau-rose font-bold mt-2">(11) 99309-2933</p>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-peau-dark mb-4 uppercase text-sm tracking-widest">Siga-nos</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/peauetsante/" target="_blank" rel="noopener noreferrer"
+                            class="text-peau-gray hover:text-peau-rose transition-colors"><i
+                                data-lucide="instagram"></i></a>
+                        <a href="https://www.facebook.com/peausante" target="_blank" rel="noopener noreferrer"
+                            class="text-peau-gray hover:text-peau-rose transition-colors"><i
+                                data-lucide="facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
+                <p class="text-peau-gray text-xs">&copy; 2026 Peau Santé Biomedicina Estética. Todos os direitos
+                    reservados.</p>
+                <p class="text-peau-gray text-xs">CNPJ: 18.416.452/0001-14</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta para aplicação de Botox.')"
+        class="fixed bottom-6 right-6 z-[90] bg-whatsapp text-white p-4 rounded-full shadow-2xl flex items-center justify-center btn-float-wa transition-all hover:scale-110"
+        aria-label="Agendar via WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
+    <!-- Lead Modal -->
+    <div id="lead-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden items-center justify-center px-4 transition-all">
+        <div class="bg-peau-card w-full max-w-md rounded-3xl p-8 relative shadow-2xl">
+            <button onclick="closeLeadModal()"
+                class="absolute top-4 right-4 text-peau-gray hover:text-peau-rose transition-colors"
+                aria-label="Fechar"><i data-lucide="x"></i></button>
+            <div class="text-center mb-6">
+                <img src="/assets/images/logo-tema-claro.png" class="h-14 mx-auto block dark:hidden"
+                    alt="Peau Santé">
+                <img src="/assets/images/logo.png" class="h-14 mx-auto hidden dark:block" alt="Peau Santé">
+                <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
+                <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu contato.</p>
+            </div>
+            <form id="leadForm" onsubmit="submitLead(event)" class="space-y-4">
+                <input type="text" id="leadName" required placeholder="Nome Completo"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <input type="email" id="leadEmail" required placeholder="E-mail"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <input type="tel" id="leadPhone" required maxlength="15" placeholder="WhatsApp (00) 00000-0000"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <div class="flex items-start gap-2">
+                    <input type="checkbox" id="lgpdConsent" required class="mt-1 accent-peau-rose cursor-pointer">
+                    <label for="lgpdConsent" class="text-xs text-peau-gray leading-tight cursor-pointer">Concordo com a
+                        <a href="/politica-privacidade.html" target="_blank" class="underline">Política de
+                            Privacidade</a> e
+                        autorizo o uso dos meus dados conforme a LGPD.</label>
+                </div>
+                <button type="submit" id="submitLeadBtn" disabled
+                    class="w-full bg-whatsapp hover:bg-whatsappdark disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold text-lg transition-all shadow-md">Continuar
+                    para o WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+        const btnMobile = document.getElementById('mobile-menu-btn');
+        const menuMobile = document.getElementById('mobile-menu');
+        if (btnMobile) {
+            btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
+        }
+
+        // Máscara de Telefone
+        const phoneInput = document.getElementById('leadPhone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, "");
+                if (value.length > 11) value = value.slice(0, 11);
+                if (value.length > 10) {
+                    value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+                } else if (value.length > 5) {
+                    value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                } else if (value.length > 2) {
+                    value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
+                } else if (value.length > 0) {
+                    value = value.replace(/^(\d{0,2}).*/, "($1");
+                }
+                e.target.value = value;
+            });
+        }
+
+        function changeFontSize(s, r) {
+            let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
+            f = Math.max(85, Math.min(130, f));
+            document.documentElement.style.fontSize = f + '%';
+            localStorage.setItem('fontSize', f);
+        }
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        function openLeadModal(e, m) {
+            if (e) e.preventDefault(); window.currentWaMsg = m;
+            document.getElementById('lead-modal').classList.replace('hidden', 'flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLeadModal() {
+            document.getElementById('lead-modal').classList.replace('flex', 'hidden');
+            document.body.style.overflow = '';
+        }
+        const lgpdCheckbox = document.getElementById('lgpdConsent');
+        if (lgpdCheckbox) {
+            lgpdCheckbox.addEventListener('change', function () {
+                document.getElementById('submitLeadBtn').disabled = !this.checked;
+            });
+        }
+        function submitLead(e) {
+            e.preventDefault();
+            const name = document.getElementById('leadName').value;
+            const email = document.getElementById('leadEmail').value;
+            const phone = document.getElementById('leadPhone').value;
+
+            const msg = `${window.currentWaMsg}\n\n*Dados do Contato:*\nNome: ${name}\nE-mail: ${email}\nWhatsApp: ${phone}`;
+
+            window.open(`https://wa.me/5511993092933?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+            closeLeadModal();
+        }
+    </script>
+</body>
+
+</html>
