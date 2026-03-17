@@ -22,7 +22,8 @@
 
     /* Usar :root.dark dobra a força desta regra, impedindo que o minificador a quebre */
     .dark {
-        --color-peau-light: 18 18 18; /* Sem vírgulas! */
+        --color-peau-light: 18 18 18;
+        /* Sem vírgulas! */
         /* #121212 */
         --color-peau-dark: 245 245 245;
         /* #F5F5F5 */
