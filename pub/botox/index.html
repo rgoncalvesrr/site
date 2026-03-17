@@ -2,6 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
+    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -10,6 +11,7 @@
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');</script>
+    <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js)
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-38GQYR6DZ5"></script>
@@ -49,27 +51,6 @@
         content="Especialistas em Rejuvenescimento em Santo André - SP. Agende a sua consulta.">
     <meta property="twitter:image" content="https://peausante.com.br/assets/images/logo.png">
 
-    <!-- Google Tag Manager -->
-    <!-- <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');</script> -->
-    <!-- End Google Tag Manager -->
-
-    <!-- Google Analytics / Google Ads -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11200083991"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'AW-AW-11200083991');
-        gtag('config', 'G-38GQYR6DZ5');
-    </script> -->
-
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -96,14 +77,14 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS Minificado (Contém todos os estilos agora) -->
-    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <!-- Tailwind CSS Minificado -->
+    <link rel="stylesheet" href="/assets/css/style.min.css?v=1.1">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
-        // Script de detecção de tema e fonte (Mantido aqui para evitar FOUC - Flash of Unstyled Content)
+        // Script de detecção de tema e fonte
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -123,9 +104,9 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
                     <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
-                        class="h-14 w-auto object-contain drop-shadow-md transition-all block dark:hidden">
+                        class="h-14 w-auto object-contain transition-all block dark:hidden">
                     <img src="/assets/images/logo.png" alt="Logo Peau Santé"
-                        class="h-14 w-auto object-contain drop-shadow-md transition-all hidden dark:block">
+                        class="h-14 w-auto object-contain transition-all hidden dark:block">
                 </div>
 
                 <nav class="hidden md:flex space-x-8">
@@ -245,9 +226,12 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
+                <!-- Card 1 (Agora com destaque "Mais Procurado" e CTA principal) -->
                 <div
-                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full">
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 bg-peau-rose text-white text-xs font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Mais Procurado</div>
                     <div
                         class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
                         <i data-lucide="scan-face" class="w-6 h-6"></i>
@@ -265,35 +249,35 @@
                             olhos.</li>
                     </ul>
                     <a href="#" onclick="openLeadModal(event, 'Interesse: Terço Superior')"
-                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">Saber
-                        mais</a>
+                        class="w-full block text-center bg-peau-rose hover:bg-peau-rosedark text-white font-medium py-3 rounded-xl transition-colors mt-auto shadow-md">Agendar
+                        Agora</a>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2 (Agora sem destaque e com CTA secundário) -->
                 <div
-                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 bg-peau-rose text-white text-xs font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                        Mais Procurado</div>
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full">
                     <div
                         class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
                         <i data-lucide="smile" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2">Sorriso & Nariz</h3>
                     <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
-                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Bunny Lines:</strong> Rugas no nariz.
+                        <li class="flex items-start gap-2 text-sm text-peau-dark">
+                            <i data-lucide="check" class="w-4 h-4 text-peau-rose mt-0.5"></i>
+                            <strong>Bunny Lines:</strong> Rugas no nariz.
                         </li>
-                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
-                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Sorriso Gengival:</strong> Redução da
-                            gengiva exposta.</li>
-                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
-                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Queixo:</strong> Suavização de
-                            celulites mentuais.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark">
+                            <i data-lucide="check" class="w-4 h-4 text-peau-rose mt-0.5"></i>
+                            <strong>Sorriso Gengival:</strong> Redução da gengiva exposta.
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark">
+                            <i data-lucide="check" class="w-4 h-4 text-peau-rose mt-0.5"></i>
+                            <strong>Queixo:</strong> Suavização de celulites mentuais.
+                        </li>
                     </ul>
                     <a href="#" onclick="openLeadModal(event, 'Interesse: Sorriso e Nariz')"
-                        class="w-full block text-center bg-peau-rose hover:bg-peau-rosedark text-white font-medium py-3 rounded-xl transition-colors mt-auto shadow-md">Agendar
-                        Agora</a>
+                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">Saber
+                        mais</a>
                 </div>
 
                 <!-- Card 3 -->
@@ -311,9 +295,10 @@
                         <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
                                 class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Hiperidrose:</strong> Redução de suor
                             excessivo.</li>
-                        <li class="flex items-start gap-2 text-sm text-peau-dark"><i data-lucide="check"
-                                class="w-4 h-4 text-peau-rose mt-0.5"></i> <strong>Bruxismo:</strong> Alívio de tensão
-                            mandibular.</li>
+                        <li class="flex items-start gap-2 text-sm text-peau-dark">
+                            <i data-lucide="check" class="w-4 h-4 text-peau-rose mt-0.5"></i>
+                            <strong>Sorriso Triste:</strong> Ajuda a elevar os cantos da boca.
+                        </li>
                     </ul>
                     <a href="#" onclick="openLeadModal(event, 'Interesse: Contornos')"
                         class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">Saber
@@ -341,7 +326,7 @@
                         <img src="/assets/images/peausante-glabela.jpg" alt="Antes e Depois - Região da Glabela"
                             class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
                         <span
-                            class="absolute top-4 left-4 bg-peau-dark/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                            class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
                         <span
                             class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
                     </div>
@@ -362,7 +347,7 @@
                         <img src="/assets/images/peausante-linhas-frontais.jpg" alt="Antes e Depois - Linhas Frontais"
                             class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
                         <span
-                            class="absolute top-4 left-4 bg-peau-dark/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                            class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
                         <span
                             class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
                     </div>
@@ -463,7 +448,7 @@
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        O efeito costuma durar entre 4 a 6 meses, variando conforme o organismo de cada paciente, o
+                        O efeito costuma durar entre 4 a 5 meses, variando conforme o organismo de cada paciente, o
                         estilo de vida e a força muscular da área tratada. Após esse período, uma nova aplicação é
                         recomendada para manter os resultados.
                     </div>
@@ -504,6 +489,58 @@
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
                         De forma alguma. Na Peau Santé, priorizamos a naturalidade, suavizando rugas sem retirar o seu
                         movimento natural.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Há contraindicações?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        <p class="mb-3">As aplicações de toxina botulínica (botox) são seguras quando realizadas por
+                            profissionais qualificados, porém existem algumas contraindicações importantes que devem ser
+                            avaliadas antes do procedimento:</p>
+
+                        <p class="font-bold text-peau-dark mb-2">Principais contraindicações do botox:</p>
+                        <ul class="list-disc pl-5 space-y-2 mb-4">
+                            <li><strong>Gravidez e amamentação:</strong> não é recomendado devido à falta de estudos que
+                                comprovem a segurança nessas fases.</li>
+                            <li><strong>Doenças neuromusculares:</strong> pessoas com condições como miastenia gravis,
+                                esclerose lateral amiotrófica (ELA) ou síndrome de Lambert-Eaton devem evitar o
+                                procedimento, pois pode haver agravamento da fraqueza muscular.</li>
+                            <li><strong>Infecção ou inflamação no local da aplicação:</strong> o botox não deve ser
+                                aplicado em áreas com acne ativa, feridas ou qualquer tipo de infecção.</li>
+                            <li><strong>Alergia à toxina botulínica ou a componentes da fórmula:</strong> apesar de
+                                raro, é uma contraindicação absoluta.</li>
+                            <li><strong>Uso de certos medicamentos:</strong> antibióticos aminoglicosídeos, relaxantes
+                                musculares e anticoagulantes podem interferir no efeito ou aumentar riscos.</li>
+                            <li><strong>Distúrbios de coagulação:</strong> aumentam a chance de hematomas e
+                                complicações.</li>
+                            <li><strong>Doenças autoimunes não controladas:</strong> podem interferir na resposta do
+                                organismo ao procedimento.</li>
+                        </ul>
+
+                        <p><strong>Importante:</strong> Antes de realizar o botox, é essencial passar por uma avaliação
+                            profissional detalhada. Um bom especialista irá analisar seu histórico de saúde,
+                            medicamentos em uso e condições da pele para garantir um procedimento seguro e com bons
+                            resultados.</p>
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Vai ficar roxo (hematomas)?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Nossa face, assim como todo o corpo, tem uma gama de vasos sanguíneos. E sim, pode acontecer da
+                        agulha extravasar algum vaso e, consequentemente, devido ao trauma, acabar ficando roxo. Porém,
+                        a doutora tem todo um cuidado, evitando ao máximo que isso ocorra.
                     </div>
                 </details>
             </div>
