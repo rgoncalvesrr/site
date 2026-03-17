@@ -3,42 +3,41 @@
     
     <!-- Página Inicial / Institucional Principal -->
     <url>
-        <loc>https://conceitho.com/</loc>
-        <lastmod>2026-03-14</lastmod>
+        <loc>https://peausante.com.br/</loc>
+        <lastmod>2026-03-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- Landing Page de Certificados Digitais -->
     <url>
-        <loc>https://conceitho.com/certificados-digitais/</loc>
-        <lastmod>2026-03-14</lastmod>
+        <loc>https://peausante.com.br/botox/</loc>
+        <lastmod>2026-03-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <!-- Landing Page de Certificados Digitais -->
     <url>
-        <loc>https://conceitho.com/certificados-digitais/index.html</loc>
-        <lastmod>2026-03-14</lastmod>
+        <loc>https://peausante.com.br/botox/index.html</loc>
+        <lastmod>2026-03-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <!-- Página Institucional Secundária (se estiver acessível nesta URL) -->
     <url>
-        <loc>https://conceitho.com/index.html</loc>
-        <lastmod>2026-03-14</lastmod>
+        <loc>https://peausante.com.br/index.html</loc>
+        <lastmod>2026-03-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Página de Política de Privacidade -->
     <url>
-        <loc>https://conceitho.com/politica-privacidade.html</loc>
-        <lastmod>2026-03-14</lastmod>
+        <loc>https://peausante.com.br/politica-privacidade.html</loc>
+        <lastmod>2026-03-17</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
-
 </urlset>

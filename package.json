@@ -4,8 +4,8 @@
   "description": "Build process para a Landing Page Peau Santé",
   "main": "index.html",
   "scripts": {
-    "build": "tailwindcss -i ./input.css -o ./pub/assets/css/style.min.css --minify",
-    "watch": "tailwindcss -i ./input.css -o ./pub/assets/css/style.min.css --watch"
+    "dev": "tailwindcss -i ./input.css -o ./pub/assets/css/style.min.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./pub/assets/css/style.min.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.19"
