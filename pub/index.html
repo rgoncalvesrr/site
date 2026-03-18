@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
-    <!-- Preconnects para acelerar ligações futuras -->
+    <!-- Preconnects para acelerar scripts de terceiros (Melhora no FCP e TBT) -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://connect.facebook.net">
 
@@ -30,22 +30,21 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://peausante.com.br/">
     <meta property="twitter:title" content="Peau Santé Estética">
-    <meta property="twitter:description"
-        content="Tratamentos estéticos de alta performance em Santo André.">
+    <meta property="twitter:description" content="Tratamentos estéticos de alta performance em Santo André.">
     <meta property="twitter:image" content="https://peausante.com.br/assets/images/logo.png">
 
     <!-- Fontes Locais (Self-hosted) para Alta Performance -->
     <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Tailwind CSS Minificado -->
+    <!-- Tailwind CSS Minificado com versão atualizada para quebrar o cache -->
     <link rel="stylesheet" href="/assets/css/style.min.css?v=1.3">
 
     <!-- Lucide Icons com atributo DEFER para não bloquear a renderização HTML -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
-        // Script de deteção de tema e fonte ultra-rápido (render-blocking evitado)
+        // Script de detecção de tema e fonte otimizado
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -63,26 +62,30 @@
         class="fixed w-full bg-peau-card/90 backdrop-blur-md z-50 border-b border-peau-rose/20 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé" width="180" height="56"
+                <a href="/" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <!-- Dimensões fixas removidas para evitar deformação caso o arquivo de produção seja diferente -->
+                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
                         class="h-14 w-auto object-contain transition-all block dark:hidden">
-                    <img src="/assets/images/logo.png" alt="Logo Peau Santé" width="180" height="56"
+                    <img src="/assets/images/logo.png" alt="Logo Peau Santé"
                         class="h-14 w-auto object-contain transition-all hidden dark:block">
-                </div>
+                </a>
 
                 <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Início</a>
                     <a href="#tratamentos"
                         class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Tratamentos</a>
-                    <a href="#sobre"
-                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">A Clínica</a>
+                    <a href="#sobre" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">A
+                        Clínica</a>
                     <a href="#conveniencias"
                         class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Conveniências</a>
                     <a href="#localizacao"
                         class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Localização</a>
-                    <a href="#faq" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas</a>
+                    <a href="#faq"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas</a>
                 </nav>
 
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Controles Desktop (Ocultos no Mobile) -->
                     <div
                         class="hidden md:flex items-center gap-1 bg-peau-light rounded-full px-2 py-1 border border-peau-rose/20 transition-colors">
                         <button onclick="changeFontSize(-5)" class="p-1 text-peau-gray hover:text-peau-rose"
@@ -100,13 +103,22 @@
                         </button>
                     </div>
 
-                    <a href="#"
-                        onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+                    <!-- Botão de Tema Mobile (Visível apenas no Mobile) -->
+                    <button onclick="toggleTheme()"
+                        class="md:hidden p-2 text-peau-gray hover:text-peau-rose transition-colors"
+                        aria-label="Alternar tema">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+
+                    <!-- Botão Agendar Desktop -->
+                    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
                         class="hidden md:flex items-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
                         Agendar Consulta
                     </a>
 
+                    <!-- Botão Menu Hamburguer Mobile -->
                     <button class="md:hidden p-2 text-peau-dark" id="mobile-menu-btn" aria-label="Abrir menu">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
@@ -114,21 +126,43 @@
             </div>
         </div>
 
+        <!-- Dropdown Menu Mobile -->
         <div class="md:hidden hidden bg-peau-card border-t border-peau-rose/20 absolute w-full transition-colors"
             id="mobile-menu">
-            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
-                <a href="#tratamentos"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Tratamentos</a>
-                <a href="#sobre"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">A Clínica</a>
-                <a href="#conveniencias"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Conveniências</a>
-                <a href="#localizacao"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Localização</a>
-                <a href="#faq"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Dúvidas</a>
-                <a href="#"
-                    onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+            <div class="px-4 pt-2 pb-4 shadow-lg flex flex-col">
+                <div class="space-y-1">
+                    <a href="/"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Início</a>
+                    <a href="#tratamentos"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Tratamentos</a>
+                    <a href="#sobre"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">A
+                        Clínica</a>
+                    <a href="#conveniencias"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Conveniências</a>
+                    <a href="#localizacao"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Localização</a>
+                    <a href="#faq"
+                        class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Dúvidas</a>
+                </div>
+
+                <!-- Controles de Fonte Mobile -->
+                <div class="flex items-center justify-between mt-4 pt-4 border-t border-peau-rose/10 px-3">
+                    <span class="text-sm text-peau-gray font-medium">Tamanho do texto:</span>
+                    <div
+                        class="flex items-center gap-2 bg-peau-light rounded-full px-3 py-1 border border-peau-rose/20 transition-colors">
+                        <button onclick="changeFontSize(-5)" class="p-1 text-peau-gray hover:text-peau-rose font-medium"
+                            aria-label="Diminuir fonte">A-</button>
+                        <button onclick="changeFontSize(0, true)"
+                            class="p-1 text-peau-gray hover:text-peau-rose text-sm font-bold"
+                            aria-label="Tamanho padrão">A</button>
+                        <button onclick="changeFontSize(5)"
+                            class="p-1 text-peau-gray hover:text-peau-rose font-medium text-lg"
+                            aria-label="Aumentar fonte">A+</button>
+                    </div>
+                </div>
+
+                <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
                     class="block mt-4 text-center bg-peau-rose text-white px-3 py-2 rounded-md font-medium">Agendar
                     Agora</a>
             </div>
@@ -148,7 +182,8 @@
                         A sua beleza na sua forma mais <span class="text-peau-rose italic">extraordinária</span>.
                     </h1>
                     <p class="text-lg text-peau-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Na Peau Santé, combinamos tecnologia avançada, protocolos exclusivos e um olhar clínico refinado para realçar a sua estética mantendo sempre a sua essência e naturalidade.
+                        Na Peau Santé, combinamos tecnologia avançada, protocolos exclusivos e um olhar clínico refinado
+                        para realçar a sua estética mantendo sempre a sua essência e naturalidade.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                         <a href="#"
@@ -169,9 +204,10 @@
                     </div>
                     <div
                         class="relative rounded-t-full rounded-b-3xl shadow-2xl w-full h-[500px] lg:h-[600px] border-4 border-peau-card transition-colors overflow-hidden group">
-                        <!-- Imagem do Banner com fetchpriority para Largest Contentful Paint (LCP) super rápido -->
+                        <!-- Imagem do Banner com fetchpriority para LCP rápido -->
                         <img src="/assets/images/institucional-banner.webp" fetchpriority="high" decoding="async"
-                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Banner Peau Santé">
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            alt="Banner Peau Santé">
                     </div>
                 </div>
             </div>
@@ -182,9 +218,11 @@
     <section class="py-20 bg-peau-light transition-colors" id="tratamentos">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Protocolos de Excelência</span>
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Protocolos de
+                    Excelência</span>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Nossos Tratamentos</h2>
-                <p class="text-peau-gray max-w-2xl mx-auto">Descubra os procedimentos faciais mais procurados na nossa clínica para revitalizar, harmonizar e rejuvenescer a sua pele com máxima segurança.</p>
+                <p class="text-peau-gray max-w-2xl mx-auto">Descubra os procedimentos faciais mais procurados na nossa
+                    clínica para revitalizar, harmonizar e rejuvenescer a sua pele com máxima segurança.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -198,10 +236,14 @@
                         class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
                         <i data-lucide="scan-face" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Toxina Botulínica</h3>
-                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Suavize linhas de expressão e previna rugas de forma elegante e natural. Indicado para testa, glabela, pés de galinha, sorriso gengival e contorno facial.</p>
-                    
-                    <a href="/botox/" 
+                    <h3
+                        class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">
+                        Toxina Botulínica</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Suavize linhas de expressão e previna rugas
+                        de forma elegante e natural. Indicado para testa, glabela, pés de galinha, sorriso gengival e
+                        contorno facial.</p>
+
+                    <a href="/botox/"
                         class="w-full block text-center bg-peau-rose hover:bg-peau-rosedark text-white font-medium py-3 rounded-xl transition-colors mt-auto shadow-md">
                         Detalhes do Tratamento
                     </a>
@@ -214,10 +256,14 @@
                         class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
                         <i data-lucide="droplets" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Limpeza de Pele</h3>
-                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Remoção profunda de cravos, miliuns e impurezas. Um cuidado essencial para controlar a oleosidade, prevenir a acne e devolver o brilho e a maciez ao seu rosto.</p>
-                    
-                    <a href="/limpeza-de-pele/" 
+                    <h3
+                        class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">
+                        Limpeza de Pele</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Remoção profunda de cravos, miliuns e
+                        impurezas. Um cuidado essencial para controlar a oleosidade, prevenir a acne e devolver o brilho
+                        e a maciez ao seu rosto.</p>
+
+                    <a href="/limpeza-de-pele/"
                         class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">
                         Detalhes do Tratamento
                     </a>
@@ -230,10 +276,15 @@
                         class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
                         <i data-lucide="sparkles" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Tratamentos Faciais</h3>
-                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Trabalhamos com uma gama completa de protocolos faciais personalizados para hidratação profunda, bioestimuladores de colágeno e harmonização facial.</p>
-                    
-                    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de conhecer os outros tratamentos faciais disponíveis na Peau Santé.')"
+                    <h3
+                        class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">
+                        Tratamentos Faciais</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Trabalhamos com uma gama completa de
+                        protocolos faciais personalizados para hidratação profunda, bioestimuladores de colágeno e
+                        harmonização facial.</p>
+
+                    <a href="#"
+                        onclick="openLeadModal(event, 'Olá, gostaria de conhecer os outros tratamentos faciais disponíveis na Peau Santé.')"
                         class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">
                         Falar com a Clínica
                     </a>
@@ -246,38 +297,47 @@
     <section class="py-20 bg-peau-card transition-colors" id="sobre">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Imagem da Clínica -->
                 <div class="w-full lg:w-1/2">
-                    <img src="/assets/images/institucional-recepcao.webp" alt="Nossa Clínica"
-                         loading="lazy" decoding="async" width="600" height="750"
+                    <img src="/assets/images/institucional-recepcao.webp" alt="Nossa Clínica" loading="lazy"
+                        decoding="async" width="600" height="750"
                         class="rounded-3xl shadow-2xl w-full object-cover aspect-[4/5] object-center">
                 </div>
                 <div class="w-full lg:w-1/2 space-y-8">
                     <div>
-                        <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">A Essência Peau Santé</span>
-                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Experiência, Cuidado e Ciência a favor da sua pele.</h2>
+                        <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">A Essência Peau
+                            Santé</span>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Experiência,
+                            Cuidado e Ciência a favor da sua pele.</h2>
                         <p class="text-peau-gray leading-relaxed">
-                            Fundada com a missão de transformar o conceito de estética em Santo André, a Peau Santé prioriza a harmonia e o respeito às características únicas de cada paciente. 
+                            Fundada com a missão de transformar o conceito de estética em Santo André, a Peau Santé
+                            prioriza a harmonia e o respeito às características únicas de cada paciente.
                         </p>
                         <p class="text-peau-gray leading-relaxed mt-4">
-                            Sob o comando de uma <strong>especialista com mais de 12 anos de atuação</strong>, garantimos um ambiente seguro, acolhedor e equipado com os melhores produtos e tecnologias do mercado.
+                            Sob o comando de uma <strong>especialista com mais de 12 anos de atuação</strong>,
+                            garantimos um ambiente seguro, acolhedor e equipado com os melhores produtos e tecnologias
+                            do mercado.
                         </p>
                     </div>
 
                     <div class="space-y-6 mt-8">
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Protocolos baseados em comprovação científica.</span>
+                            <span class="text-peau-dark font-medium">Protocolos baseados em comprovação
+                                científica.</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Consulta minuciosa antes de qualquer procedimento.</span>
+                            <span class="text-peau-dark font-medium">Consulta minuciosa antes de qualquer
+                                procedimento.</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Atendimento humanizado focado nos seus objetivos.</span>
+                            <span class="text-peau-dark font-medium">Atendimento humanizado focado nos seus
+                                objetivos.</span>
                         </div>
                     </div>
-                    
+
                     <div class="pt-6">
                         <a href="#"
                             onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta com a especialista.')"
@@ -296,73 +356,86 @@
             <div class="text-center mb-16">
                 <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Seu Conforto</span>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Nossas Conveniências</h2>
-                <p class="text-peau-gray max-w-2xl mx-auto">Pensamos em cada detalhe para que a sua experiência na Peau Santé seja relaxante, completa e sem preocupações.</p>
+                <p class="text-peau-gray max-w-2xl mx-auto">Pensamos em cada detalhe para que a sua experiência na Peau
+                    Santé seja relaxante, completa e sem preocupações.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 <!-- Estacionamento -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="car" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">Estacionamento</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Local de fácil acesso com estacionamento e serviço de manobrista para o seu conforto e segurança.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Local de fácil acesso com estacionamento e
+                            serviço de manobrista para o seu conforto e segurança.</p>
                     </div>
                 </div>
 
                 <!-- Elevador -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="arrow-up-down" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">Elevador</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Nosso prédio conta com elevadores modernos para garantir acessibilidade a todos os pacientes.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Nosso prédio conta com elevadores modernos
+                            para garantir acessibilidade a todos os pacientes.</p>
                     </div>
                 </div>
 
                 <!-- Wi-Fi -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="wifi" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">Wi-Fi Gratuito</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Conexão de internet de alta velocidade à sua disposição durante toda a sua permanência.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Conexão de internet de alta velocidade à sua
+                            disposição durante toda a sua permanência.</p>
                     </div>
                 </div>
 
                 <!-- Café Especial -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="coffee" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">Café Especial</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Desfrute de um café Dolce Gusto ou chás selecionados enquanto aguarda o seu atendimento.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Desfrute de um café Dolce Gusto ou chás
+                            selecionados enquanto aguarda o seu atendimento.</p>
                     </div>
                 </div>
 
                 <!-- Cartões -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="credit-card" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">Cartões Aceitos</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Aceitamos pagamentos via cartões de crédito e débito de todas as principais bandeiras.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Aceitamos pagamentos via cartões de crédito e
+                            débito de todas as principais bandeiras.</p>
                     </div>
                 </div>
 
                 <!-- PIX e Link -->
                 <div class="flex items-start gap-4">
-                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                    <div
+                        class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
                         <i data-lucide="smartphone" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-peau-dark mb-1 text-lg">PIX e Link de Pagamento</h4>
-                        <p class="text-sm text-peau-gray leading-relaxed">Oferecemos métodos digitais rápidos e seguros para sua maior comodidade na hora de pagar.</p>
+                        <p class="text-sm text-peau-gray leading-relaxed">Oferecemos métodos digitais rápidos e seguros
+                            para sua maior comodidade na hora de pagar.</p>
                     </div>
                 </div>
             </div>
@@ -372,12 +445,15 @@
     <!-- Seção Localização (Waze e Google Maps) -->
     <section class="py-20 bg-peau-card transition-colors" id="localizacao">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-peau-light rounded-3xl shadow-xl border border-peau-rose/10 overflow-hidden flex flex-col lg:flex-row">
-                
+            <div
+                class="bg-peau-light rounded-3xl shadow-xl border border-peau-rose/10 overflow-hidden flex flex-col lg:flex-row">
+
+                <!-- Informações e Botões -->
                 <div class="w-full lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
                     <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Como Chegar</span>
-                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-6">Visite a nossa Clínica</h2>
-                    
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-6">Visite a nossa
+                        Clínica</h2>
+
                     <div class="flex items-start gap-4 mb-8">
                         <div class="bg-peau-card p-3 rounded-full text-peau-rose shadow-sm border border-peau-rose/5">
                             <i data-lucide="map-pin" class="w-6 h-6"></i>
@@ -398,26 +474,33 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-peau-dark text-lg">Horário de Funcionamento</h4>
-                            <p class="text-peau-gray mt-1 leading-relaxed">Atendimento exclusivo com horário marcado.</p>
+                            <p class="text-peau-gray mt-1 leading-relaxed">Atendimento exclusivo com horário marcado.
+                            </p>
                         </div>
                     </div>
 
                     <p class="text-peau-dark font-medium mb-4">Escolha a sua rota:</p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Av.+Industrial,+780+-+Jardim,+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener noreferrer"
+                        <!-- Link Google Maps -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=Av.+Industrial,+780+-+Jardim,+Santo+Andr%C3%A9+-+SP"
+                            target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center gap-2 bg-white dark:bg-peau-card border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all shadow-sm flex-1">
                             <i data-lucide="map" class="w-5 h-5 text-[#4285F4]"></i> Google Maps
                         </a>
-                        
-                        <a href="https://www.waze.com/ul?q=Av.%20Industrial%2C%20780%20Santo%20Andr%C3%A9" target="_blank" rel="noopener noreferrer"
+
+                        <!-- Link Waze -->
+                        <a href="https://www.waze.com/ul?q=Av.%20Industrial%2C%20780%20Santo%20Andr%C3%A9"
+                            target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center gap-2 bg-white dark:bg-peau-card border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all shadow-sm flex-1">
                             <i data-lucide="navigation" class="w-5 h-5 text-[#33ccff]"></i> Waze
                         </a>
                     </div>
                 </div>
 
+                <!-- Mapa / Imagem da Fachada -->
                 <div class="w-full lg:w-1/2 bg-gray-200 relative min-h-[300px]">
-                    <img src="/assets/images/institucional-banner.webp" loading="lazy" decoding="async" alt="Localização Peau Santé" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="/assets/images/institucional-banner.webp" loading="lazy" decoding="async"
+                        alt="Localização Peau Santé" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/10 dark:bg-black/40"></div>
                 </div>
             </div>
@@ -442,7 +525,9 @@
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        A consulta é um momento fundamental onde nossa especialista escuta os seus desejos, analisa a qualidade da sua pele e a musculatura facial. Com base nisso, montamos um plano de tratamento personalizado para garantir os melhores resultados com segurança.
+                        A consulta é um momento fundamental onde nossa especialista escuta os seus desejos, analisa a
+                        qualidade da sua pele e a musculatura facial. Com base nisso, montamos um plano de tratamento
+                        personalizado para garantir os melhores resultados com segurança.
                     </div>
                 </details>
 
@@ -454,7 +539,8 @@
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        Aceitamos pagamentos via PIX, cartões de débito e crédito. Consulte nossa equipe de atendimento no WhatsApp para entender as condições de parcelamento de acordo com o tratamento escolhido.
+                        Aceitamos pagamentos via PIX, cartões de débito e crédito. Consulte nossa equipe de atendimento
+                        no WhatsApp para entender as condições de parcelamento de acordo com o tratamento escolhido.
                     </div>
                 </details>
 
@@ -466,7 +552,9 @@
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        Com certeza! A estética avançada é para todos. Temos protocolos e técnicas adaptadas para a anatomia e as características específicas da pele e musculatura masculina, sempre buscando um resultado natural.
+                        Com certeza! A estética avançada é para todos. Temos protocolos e técnicas adaptadas para a
+                        anatomia e as características específicas da pele e musculatura masculina, sempre buscando um
+                        resultado natural.
                     </div>
                 </details>
 
@@ -478,7 +566,9 @@
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        Na maioria dos casos, sim. Se o paciente desejar e não houver nenhuma contraindicação detectada durante a consulta inicial, podemos iniciar o protocolo (como a aplicação de Toxina Botulínica ou Limpeza de Pele) imediatamente a seguir.
+                        Na maioria dos casos, sim. Se o paciente desejar e não houver nenhuma contraindicação detectada
+                        durante a consulta inicial, podemos iniciar o protocolo (como a aplicação de Toxina Botulínica
+                        ou Limpeza de Pele) imediatamente a seguir.
                     </div>
                 </details>
             </div>
@@ -490,10 +580,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-peau-rose/10 pb-12">
                 <div>
-                    <img src="/assets/images/logo-tema-claro.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
-                        alt="Peau Santé">
-                    <img src="/assets/images/logo.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
-                        alt="Peau Santé">
+                    <a href="/" class="block inline-block">
+                        <img src="/assets/images/logo-tema-claro.png" loading="lazy"
+                            class="h-20 w-auto mx-auto md:mx-0 dark:hidden" alt="Peau Santé">
+                        <img src="/assets/images/logo.png" loading="lazy"
+                            class="h-20 w-auto mx-auto md:mx-0 hidden dark:block" alt="Peau Santé">
+                    </a>
                     <p class="text-peau-gray text-sm mt-4">Centro de Biomedicina e Estética Avançada. Referência em
                         tratamentos focados na naturalidade e saúde da pele.</p>
                 </div>
@@ -537,7 +629,8 @@
                 class="absolute top-4 right-4 text-peau-gray hover:text-peau-rose transition-colors"
                 aria-label="Fechar"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
-                <img src="/assets/images/logo-tema-claro.png" class="h-14 w-auto mx-auto block dark:hidden" alt="Peau Santé">
+                <img src="/assets/images/logo-tema-claro.png" class="h-14 w-auto mx-auto block dark:hidden"
+                    alt="Peau Santé">
                 <img src="/assets/images/logo.png" class="h-14 w-auto mx-auto hidden dark:block" alt="Peau Santé">
                 <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
                 <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu atendimento.</p>
@@ -564,16 +657,23 @@
 
     <!-- Script de Gestão de UI e Atraso de Trackers (GTM / Facebook) -->
     <script>
-        // DOM Elements and general UI functions
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            
+
             const btnMobile = document.getElementById('mobile-menu-btn');
             const menuMobile = document.getElementById('mobile-menu');
-            if (btnMobile) {
+            if (btnMobile && menuMobile) {
                 btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
+
+                // Fecha o menu mobile automaticamente ao clicar numa opção
+                const mobileLinks = menuMobile.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuMobile.classList.add('hidden');
+                    });
+                });
             }
 
             const phoneInput = document.getElementById('leadPhone');
@@ -602,30 +702,29 @@
             }
         });
 
-        // Funções globais de UI
         function changeFontSize(s, r) {
             let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
             f = Math.max(85, Math.min(130, f));
             document.documentElement.style.fontSize = f + '%';
             localStorage.setItem('fontSize', f);
         }
-        
+
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         }
-        
+
         function openLeadModal(e, m) {
             if (e) e.preventDefault(); window.currentWaMsg = m;
             document.getElementById('lead-modal').classList.replace('hidden', 'flex');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeLeadModal() {
             document.getElementById('lead-modal').classList.replace('flex', 'hidden');
             document.body.style.overflow = '';
         }
-        
+
         function submitLead(e) {
             e.preventDefault();
             const name = document.getElementById('leadName').value;
@@ -639,41 +738,43 @@
 
         // =========================================================================
         // OTIMIZAÇÃO PAGESPEED: Carregamento Atrasado (Lazy Load) de Trackers
-        // Isto elimina o Total Blocking Time (TBT) e aumenta a nota Mobile para ~95+
         // =========================================================================
         let scriptsCarregados = false;
-        
+
         function carregarScriptsTerceiros() {
             if (scriptsCarregados) return;
             scriptsCarregados = true;
 
             // Injetar Google Tag Manager
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PSBGFN7');
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');
 
             // Injetar Facebook Pixel
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1234567890'); // O SEU ID DO PIXEL ESTÁ AQUI
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1234567890'); // O SEU ID DO PIXEL AQUI
             fbq('track', 'PageView');
         }
 
-        // Os scripts pesados só vão disparar quando o utilizador interagir com a página
-        // ou após 3.5 segundos como medida de segurança.
-        ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function(evento) {
+        ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function (evento) {
             window.addEventListener(evento, carregarScriptsTerceiros, { once: true, passive: true });
         });
-        
-        // Fallback de segurança: carrega os scripts após 3.5s se não houver interação
+
         setTimeout(carregarScriptsTerceiros, 3500);
     </script>
 </body>
