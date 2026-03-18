@@ -25,6 +25,22 @@
         <priority>0.9</priority>
     </url>
 
+    <!-- Landing Page de Certificados Digitais -->
+    <url>
+        <loc>https://peausante.com.br/limpeza-de-pele/</loc>
+        <lastmod>2026-03-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Landing Page de Certificados Digitais -->
+    <url>
+        <loc>https://peausante.com.br/limpeza-de-pele/index.html</loc>
+        <lastmod>2026-03-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Página Institucional Secundária (se estiver acessível nesta URL) -->
     <url>
         <loc>https://peausante.com.br/index.html</loc>
