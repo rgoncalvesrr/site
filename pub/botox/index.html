@@ -2,6 +2,10 @@
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
+    <!-- Preconnects para acelerar scripts de terceiros (Melhora no FCP e TBT) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -67,11 +71,11 @@
     <!-- Tailwind CSS Minificado -->
     <link rel="stylesheet" href="/assets/css/style.min.css?v=1.2">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons com atributo DEFER para não bloquear a renderização HTML -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
-        // Script de detecção de tema e fonte
+        // Script de detecção de tema e fonte otimizado
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -90,17 +94,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
+                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé" width="180" height="56"
                         class="h-14 w-auto object-contain transition-all block dark:hidden">
-                    <img src="/assets/images/logo.png" alt="Logo Peau Santé"
+                    <img src="/assets/images/logo.png" alt="Logo Peau Santé" width="180" height="56"
                         class="h-14 w-auto object-contain transition-all hidden dark:block">
                 </div>
 
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#beneficios"
-                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Benefícios</a>
                     <a href="#areas" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Áreas
                         de Aplicação</a>
+                    <a href="#resultados"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Resultados</a>
+                    <a href="#beneficios"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Benefícios</a>
                     <a href="#faq" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas
                         Frequentes</a>
                 </nav>
@@ -140,11 +146,13 @@
         <div class="md:hidden hidden bg-peau-card border-t border-peau-rose/20 absolute w-full transition-colors"
             id="mobile-menu">
             <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
-                <a href="#beneficios"
-                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Benefícios</a>
                 <a href="#areas"
                     class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Áreas
                     de Aplicação</a>
+                <a href="#resultados"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Resultados</a>
+                <a href="#beneficios"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Benefícios</a>
                 <a href="#faq"
                     class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Dúvidas
                     Frequentes</a>
@@ -191,9 +199,9 @@
                     </div>
                     <div
                         class="relative rounded-t-full rounded-b-[40px] shadow-2xl w-full h-[500px] lg:h-[600px] border-4 border-peau-card transition-colors overflow-hidden group">
-                        <img src="/assets/images/capa-tema-claro.webp"
+                        <img src="/assets/images/capa-tema-claro.webp" fetchpriority="high" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block dark:hidden">
-                        <img src="/assets/images/capa-tema-escuro.webp"
+                        <img src="/assets/images/capa-tema-escuro.webp" fetchpriority="high" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hidden dark:block">
                     </div>
                 </div>
@@ -213,7 +221,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 (Agora com destaque "Mais Procurado" e CTA principal) -->
+                <!-- Card 1 -->
                 <div
                     class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full relative overflow-hidden">
                     <div
@@ -240,7 +248,7 @@
                         Agora</a>
                 </div>
 
-                <!-- Card 2 (Agora sem destaque e com CTA secundário) -->
+                <!-- Card 2 -->
                 <div
                     class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full">
                     <div
@@ -310,7 +318,7 @@
                 <div
                     class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
                     <div class="relative overflow-hidden">
-                        <img src="/assets/images/peausante-glabela.webp" alt="Antes e Depois - Região da Glabela"
+                        <img src="/assets/images/peausante-glabela.webp" loading="lazy" decoding="async" alt="Antes e Depois - Região da Glabela"
                             class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
                         <span
                             class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
@@ -331,7 +339,7 @@
                 <div
                     class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
                     <div class="relative overflow-hidden">
-                        <img src="/assets/images/peausante-linhas-frontais.webp" alt="Antes e Depois - Linhas Frontais"
+                        <img src="/assets/images/peausante-linhas-frontais.webp" loading="lazy" decoding="async" alt="Antes e Depois - Linhas Frontais"
                             class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
                         <span
                             class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
@@ -366,7 +374,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="w-full lg:w-1/2">
-                    <img src="/assets/images/peausante-porque.webp" alt="Por que escolher a Peau Santé"
+                    <img src="/assets/images/peausante-porque.webp" loading="lazy" decoding="async" alt="Por que escolher a Peau Santé"
                         class="rounded-[40px] shadow-2xl w-full object-cover">
                 </div>
                 <div class="w-full lg:w-1/2 space-y-8">
@@ -562,9 +570,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-peau-rose/10 pb-12">
                 <div>
-                    <img src="/assets/images/logo-tema-claro.png" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
+                    <img src="/assets/images/logo-tema-claro.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
                         alt="Peau Santé">
-                    <img src="/assets/images/logo.png" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
+                    <img src="/assets/images/logo.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
                         alt="Peau Santé">
                     <p class="text-peau-gray text-sm mt-4">Centro de Biomedicina e Estética Avançada. Referência em
                         tratamentos focados na naturalidade.</p>
@@ -609,8 +617,8 @@
                 class="absolute top-4 right-4 text-peau-gray hover:text-peau-rose transition-colors"
                 aria-label="Fechar"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
-                <img src="/assets/images/logo-tema-claro.png" class="h-14 mx-auto block dark:hidden" alt="Peau Santé">
-                <img src="/assets/images/logo.png" class="h-14 mx-auto hidden dark:block" alt="Peau Santé">
+                <img src="/assets/images/logo-tema-claro.png" width="180" height="56" class="h-14 w-auto mx-auto block dark:hidden" alt="Peau Santé">
+                <img src="/assets/images/logo.png" width="180" height="56" class="h-14 w-auto mx-auto hidden dark:block" alt="Peau Santé">
                 <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
                 <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu contato.</p>
             </div>
@@ -635,34 +643,48 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts Modificados para Alta Performance -->
     <script>
-        lucide.createIcons();
-        const btnMobile = document.getElementById('mobile-menu-btn');
-        const menuMobile = document.getElementById('mobile-menu');
-        if (btnMobile) {
-            btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
-        }
+        // Envolve o código num evento DOMContentLoaded para não travar a renderização do HTML
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            const btnMobile = document.getElementById('mobile-menu-btn');
+            const menuMobile = document.getElementById('mobile-menu');
+            if (btnMobile) {
+                btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
+            }
 
-        // Máscara de Telefone
-        const phoneInput = document.getElementById('leadPhone');
-        if (phoneInput) {
-            phoneInput.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, "");
-                if (value.length > 11) value = value.slice(0, 11);
-                if (value.length > 10) {
-                    value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
-                } else if (value.length > 5) {
-                    value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-                } else if (value.length > 2) {
-                    value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
-                } else if (value.length > 0) {
-                    value = value.replace(/^(\d{0,2}).*/, "($1");
-                }
-                e.target.value = value;
-            });
-        }
+            // Máscara de Telefone
+            const phoneInput = document.getElementById('leadPhone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, "");
+                    if (value.length > 11) value = value.slice(0, 11);
+                    if (value.length > 10) {
+                        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+                    } else if (value.length > 5) {
+                        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                    } else if (value.length > 2) {
+                        value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
+                    } else if (value.length > 0) {
+                        value = value.replace(/^(\d{0,2}).*/, "($1");
+                    }
+                    e.target.value = value;
+                });
+            }
 
+            const lgpdCheckbox = document.getElementById('lgpdConsent');
+            if (lgpdCheckbox) {
+                lgpdCheckbox.addEventListener('change', function () {
+                    document.getElementById('submitLeadBtn').disabled = !this.checked;
+                });
+            }
+        });
+
+        // Funções mantidas no escopo global para funcionarem com os botões (onclick)
         function changeFontSize(s, r) {
             let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
             f = Math.max(85, Math.min(130, f));
@@ -681,12 +703,6 @@
         function closeLeadModal() {
             document.getElementById('lead-modal').classList.replace('flex', 'hidden');
             document.body.style.overflow = '';
-        }
-        const lgpdCheckbox = document.getElementById('lgpdConsent');
-        if (lgpdCheckbox) {
-            lgpdCheckbox.addEventListener('change', function () {
-                document.getElementById('submitLeadBtn').disabled = !this.checked;
-            });
         }
         function submitLead(e) {
             e.preventDefault();

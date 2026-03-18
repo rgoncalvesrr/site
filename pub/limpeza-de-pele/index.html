@@ -2,6 +2,10 @@
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
+    <!-- Preconnects para acelerar scripts de terceiros (Melhora no FCP e TBT) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -67,11 +71,11 @@
     <!-- Tailwind CSS Minificado com Quebra de Cache -->
     <link rel="stylesheet" href="/assets/css/style.min.css?v=1.2">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons com atributo DEFER para não bloquear a renderização HTML -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
-        // Script de detecção de tema e fonte
+        // Script de detecção de tema e fonte otimizado
         const savedFontSize = localStorage.getItem('fontSize');
         if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -90,15 +94,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
+                    <!-- Width e Height previnem Cumulative Layout Shift (CLS) -->
+                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé" width="180" height="56"
                         class="h-14 w-auto object-contain transition-all block dark:hidden">
-                    <img src="/assets/images/logo.png" alt="Logo Peau Santé"
+                    <img src="/assets/images/logo.png" alt="Logo Peau Santé" width="180" height="56"
                         class="h-14 w-auto object-contain transition-all hidden dark:block">
                 </div>
 
                 <nav class="hidden md:flex space-x-8">
                     <a href="#beneficios"
                         class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Benefícios</a>
+                    <a href="#resultados"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Resultados</a>
                     <a href="#diferencial" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">A
                         Especialista</a>
                     <a href="#faq" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas
@@ -142,6 +149,8 @@
             <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
                 <a href="#beneficios"
                     class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Benefícios</a>
+                <a href="#resultados"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Resultados</a>
                 <a href="#diferencial"
                     class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">A
                     Especialista</a>
@@ -196,11 +205,11 @@
                     </div>
                     <div
                         class="relative rounded-t-full rounded-b-[40px] shadow-2xl w-full h-[500px] lg:h-[600px] border-4 border-peau-card transition-colors overflow-hidden group">
-                        <!-- Imagens temporárias para a limpeza de pele. Substituir pelos arquivos reais depois -->
-                        <img src="/assets/images/capa-pele-claro.webp"
+                        <!-- fetchpriority="high" prioriza o download garantindo um LCP excelente -->
+                        <img src="/assets/images/capa-pele-claro.webp" fetchpriority="high" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block dark:hidden"
                             alt="Paciente fazendo limpeza de pele">
-                        <img src="/assets/images/capa-pele-escuro.webp"
+                        <img src="/assets/images/capa-pele-escuro.webp" fetchpriority="high" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hidden dark:block"
                             alt="Paciente fazendo limpeza de pele">
                     </div>
@@ -301,13 +310,77 @@
         </div>
     </section>
 
+    <!-- Resultados Reais -->
+    <section class="py-20 bg-peau-card transition-colors" id="resultados">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Antes e Depois</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Resultados Reais</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Confira a transformação e a renovação alcançadas na pele das nossas pacientes após uma limpeza de pele profunda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Resultado 1 -->
+                <div
+                    class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/pele-resultado-1.webp" loading="lazy" decoding="async" alt="Antes e Depois - Remoção de Cravos"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span
+                            class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                        <span
+                            class="absolute bottom-4 right-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-peau-rose"></i>
+                            <h4 class="font-bold text-peau-dark text-lg">Remoção de Cravos e Impurezas</h4>
+                        </div>
+                        <p class="text-peau-gray text-sm leading-relaxed">Pele visivelmente mais limpa, com poros desobstruídos e textura uniformizada logo após a primeira sessão de extração profunda.</p>
+                    </div>
+                </div>
+
+                <!-- Resultado 2 -->
+                <div
+                    class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/pele-resultado-2.webp" loading="lazy" decoding="async" alt="Antes e Depois - Luminosidade e Textura"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span
+                            class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-white/10">Antes</span>
+                        <span
+                            class="absolute bottom-4 right-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase shadow-md border border-peau-rose/30">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-peau-rose"></i>
+                            <h4 class="font-bold text-peau-dark text-lg">Luminosidade e Viço Recuperados</h4>
+                        </div>
+                        <p class="text-peau-gray text-sm leading-relaxed">Redução drástica da oleosidade, diminuição de inflamações e recuperação do viço natural, devolvendo o brilho saudável ao rosto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-peau-dark font-medium mb-6">Impressione-se com os seus próprios resultados.</p>
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, vi os resultados de antes e depois e quero agendar a minha sessão de limpeza de pele!')"
+                    class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    Quero este resultado
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Diferencial Section -->
-    <section class="py-20 bg-peau-card transition-colors" id="diferencial">
+    <section class="py-20 bg-peau-light transition-colors" id="diferencial">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Imagem temporária -->
+                <!-- loading="lazy" retarda o download desta imagem até que seja necessária, acelerando a página inicial -->
                 <div class="w-full lg:w-1/2">
                     <img src="/assets/images/pele-beneficios.webp" alt="Especialista com 12 anos de experiência"
+                         loading="lazy" decoding="async" width="600" height="750"
                         class="rounded-[40px] shadow-2xl w-full object-cover aspect-[4/5] object-top">
                 </div>
                 <div class="w-full lg:w-1/2 space-y-8">
@@ -326,7 +399,7 @@
                     <div class="space-y-6">
                         <div class="flex gap-4">
                             <div
-                                class="mt-1 bg-peau-light p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
+                                class="mt-1 bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
                                 <i data-lucide="eye" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -338,7 +411,7 @@
                         </div>
                         <div class="flex gap-4">
                             <div
-                                class="mt-1 bg-peau-light p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
+                                class="mt-1 bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
                                 <i data-lucide="check-square" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -349,7 +422,7 @@
                         </div>
                         <div class="flex gap-4">
                             <div
-                                class="mt-1 bg-peau-light p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
+                                class="mt-1 bg-peau-card p-2 rounded-lg text-peau-rose h-fit shadow-sm border border-peau-rose/10">
                                 <i data-lucide="flower-2" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -366,7 +439,7 @@
     </section>
 
     <!-- Dúvidas Frequentes (FAQ) -->
-    <section class="py-20 bg-peau-light transition-colors" id="faq">
+    <section class="py-20 bg-peau-card transition-colors" id="faq">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">FAQ</span>
@@ -376,7 +449,7 @@
 
             <div class="space-y-4">
                 <details
-                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
                         <h4 class="font-bold text-peau-dark">A limpeza de pele dói?</h4>
                         <i data-lucide="chevron-down"
@@ -390,7 +463,7 @@
                 </details>
 
                 <details
-                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
                         <h4 class="font-bold text-peau-dark">Com qual frequência devo realizar a limpeza?</h4>
                         <i data-lucide="chevron-down"
@@ -404,7 +477,7 @@
                 </details>
 
                 <details
-                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
                         <h4 class="font-bold text-peau-dark">O rosto fica muito vermelho ou marcado depois?</h4>
                         <i data-lucide="chevron-down"
@@ -418,7 +491,7 @@
                 </details>
 
                 <details
-                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
                         <h4 class="font-bold text-peau-dark">Grávidas podem fazer limpeza de pele?</h4>
                         <i data-lucide="chevron-down"
@@ -463,9 +536,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-peau-rose/10 pb-12">
                 <div>
-                    <img src="/assets/images/logo-tema-claro.png" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
+                    <img src="/assets/images/logo-tema-claro.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
                         alt="Peau Santé">
-                    <img src="/assets/images/logo.png" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
+                    <img src="/assets/images/logo.png" loading="lazy" width="180" height="56" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
                         alt="Peau Santé">
                     <p class="text-peau-gray text-sm mt-4">Centro de Biomedicina e Estética Avançada. Referência em
                         tratamentos focados na naturalidade e saúde da pele.</p>
@@ -510,8 +583,8 @@
                 class="absolute top-4 right-4 text-peau-gray hover:text-peau-rose transition-colors"
                 aria-label="Fechar"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
-                <img src="/assets/images/logo-tema-claro.png" class="h-14 mx-auto block dark:hidden" alt="Peau Santé">
-                <img src="/assets/images/logo.png" class="h-14 mx-auto hidden dark:block" alt="Peau Santé">
+                <img src="/assets/images/logo-tema-claro.png" width="180" height="56" class="h-14 w-auto mx-auto block dark:hidden" alt="Peau Santé">
+                <img src="/assets/images/logo.png" width="180" height="56" class="h-14 w-auto mx-auto hidden dark:block" alt="Peau Santé">
                 <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
                 <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu agendamento de pele.
                 </p>
@@ -536,34 +609,48 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts Modificados para Alta Performance -->
     <script>
-        lucide.createIcons();
-        const btnMobile = document.getElementById('mobile-menu-btn');
-        const menuMobile = document.getElementById('mobile-menu');
-        if (btnMobile) {
-            btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
-        }
+        // Envolve o código num evento DOMContentLoaded para não travar a renderização do HTML
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            const btnMobile = document.getElementById('mobile-menu-btn');
+            const menuMobile = document.getElementById('mobile-menu');
+            if (btnMobile) {
+                btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
+            }
 
-        // Máscara de Telefone
-        const phoneInput = document.getElementById('leadPhone');
-        if (phoneInput) {
-            phoneInput.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, "");
-                if (value.length > 11) value = value.slice(0, 11);
-                if (value.length > 10) {
-                    value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
-                } else if (value.length > 5) {
-                    value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-                } else if (value.length > 2) {
-                    value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
-                } else if (value.length > 0) {
-                    value = value.replace(/^(\d{0,2}).*/, "($1");
-                }
-                e.target.value = value;
-            });
-        }
+            // Máscara de Telefone
+            const phoneInput = document.getElementById('leadPhone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, "");
+                    if (value.length > 11) value = value.slice(0, 11);
+                    if (value.length > 10) {
+                        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+                    } else if (value.length > 5) {
+                        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                    } else if (value.length > 2) {
+                        value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
+                    } else if (value.length > 0) {
+                        value = value.replace(/^(\d{0,2}).*/, "($1");
+                    }
+                    e.target.value = value;
+                });
+            }
 
+            const lgpdCheckbox = document.getElementById('lgpdConsent');
+            if (lgpdCheckbox) {
+                lgpdCheckbox.addEventListener('change', function () {
+                    document.getElementById('submitLeadBtn').disabled = !this.checked;
+                });
+            }
+        });
+
+        // Funções mantidas no escopo global para funcionarem com os botões (onclick)
         function changeFontSize(s, r) {
             let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
             f = Math.max(85, Math.min(130, f));
@@ -582,12 +669,6 @@
         function closeLeadModal() {
             document.getElementById('lead-modal').classList.replace('flex', 'hidden');
             document.body.style.overflow = '';
-        }
-        const lgpdCheckbox = document.getElementById('lgpdConsent');
-        if (lgpdCheckbox) {
-            lgpdCheckbox.addEventListener('change', function () {
-                document.getElementById('submitLeadBtn').disabled = !this.checked;
-            });
         }
         function submitLead(e) {
             e.preventDefault();
