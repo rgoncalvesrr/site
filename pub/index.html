@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
+    <!-- Preconnects para acelerar scripts de terceiros (Melhora no FCP e TBT) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -12,38 +16,34 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');</script>
     <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js)
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-38GQYR6DZ5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'G-38GQYR6DZ5');
-    </script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peau Santé - Redirecionando...</title>
-    <!-- Google Tag Manager -->
-    <!-- <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');</script> -->
-    <!-- End Google Tag Manager -->
+    <title>Peau Santé | Centro de Estética Avançada em Santo André</title>
 
-    <!-- Google Analytics / Google Ads -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11200083991"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'AW-AW-11200083991');
-        gtag('config', 'G-38GQYR6DZ5');
-    </script> -->
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Clínica de Estética Avançada em Santo André. Realce sua beleza natural com tratamentos faciais e corporais personalizados. Agende sua consulta com nossa especialista!">
+    <meta name="keywords"
+        content="Clínica de Estética, Santo André, Estética Avançada, Botox, Limpeza de Pele, Rejuvenescimento, Peau Santé, Harmonização Facial">
+    <meta name="author" content="Peau Santé">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Meta / Facebook / Instagram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peausante.com.br/">
+    <meta property="og:title" content="Peau Santé | Centro de Estética Avançada">
+    <meta property="og:description"
+        content="Realce sua beleza natural com segurança e sofisticação em Santo André - SP.">
+    <meta property="og:image" content="https://peausante.com.br/assets/images/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://peausante.com.br/">
+    <meta property="twitter:title" content="Peau Santé Estética">
+    <meta property="twitter:description"
+        content="Tratamentos estéticos de alta performance em Santo André.">
+    <meta property="twitter:image" content="https://peausante.com.br/assets/images/logo.png">
 
     <!-- Meta Pixel Code -->
     <script>
@@ -64,21 +64,623 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1234567890&ev=PageView&noscript=1" /></noscript>
 
-    <!-- Redirecionamento automático após 0 segundos -->
-    <meta http-equiv="refresh" content="0; url=/botox/">
+    <!-- Fontes Locais (Self-hosted) para Alta Performance -->
+    <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Tailwind CSS Minificado com versão atualizada para quebrar o cache -->
+    <link rel="stylesheet" href="/assets/css/style.min.css?v=1.3">
+
+    <!-- Lucide Icons com atributo DEFER para não bloquear a renderização HTML -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
-        // Redirecionamento via JavaScript como fallback
-        window.location.href = "/botox/";
+        // Script de detecção de tema e fonte otimizado
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) document.documentElement.style.fontSize = savedFontSize + '%';
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     </script>
-    <link rel="stylesheet" href="/assets/css/style.min.css?v=1.2">
 </head>
 
-<body>
-    <div class="loader">
-        <p>Você está sendo redirecionado para a nossa página de Botox...</p>
-        <p>Caso não seja redirecionado automaticamente, <a href="/botox/">clique aqui</a>.</p>
+<body class="bg-peau-light text-peau-dark font-sans antialiased transition-colors duration-300">
+
+    <!-- Navbar -->
+    <header
+        class="fixed w-full bg-peau-card/90 backdrop-blur-md z-50 border-b border-peau-rose/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <!-- Dimensões fixas removidas para evitar deformação caso o arquivo de produção seja diferente -->
+                    <img src="/assets/images/logo-tema-claro.png" alt="Logo Peau Santé"
+                        class="h-14 w-auto object-contain transition-all block dark:hidden">
+                    <img src="/assets/images/logo.png" alt="Logo Peau Santé"
+                        class="h-14 w-auto object-contain transition-all hidden dark:block">
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#tratamentos"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Tratamentos</a>
+                    <a href="#sobre"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">A Clínica</a>
+                    <a href="#conveniencias"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Conveniências</a>
+                    <a href="#localizacao"
+                        class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Localização</a>
+                    <a href="#faq" class="text-peau-dark hover:text-peau-rose transition-colors font-semibold">Dúvidas</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden md:flex items-center gap-1 bg-peau-light rounded-full px-2 py-1 border border-peau-rose/20 transition-colors">
+                        <button onclick="changeFontSize(-5)" class="p-1 text-peau-gray hover:text-peau-rose"
+                            aria-label="Diminuir fonte">A-</button>
+                        <button onclick="changeFontSize(0, true)"
+                            class="p-1 text-peau-gray hover:text-peau-rose text-sm font-bold"
+                            aria-label="Tamanho padrão">A</button>
+                        <button onclick="changeFontSize(5)" class="p-1 text-peau-gray hover:text-peau-rose text-lg"
+                            aria-label="Aumentar fonte">A+</button>
+                        <div class="w-px h-4 bg-peau-rose/30 mx-1"></div>
+                        <button onclick="toggleTheme()" class="p-1 text-peau-gray hover:text-peau-rose"
+                            aria-label="Alternar tema">
+                            <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
+                            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                        </button>
+                    </div>
+
+                    <a href="#"
+                        onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+                        class="hidden md:flex items-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Agendar Consulta
+                    </a>
+
+                    <button class="md:hidden p-2 text-peau-dark" id="mobile-menu-btn" aria-label="Abrir menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden bg-peau-card border-t border-peau-rose/20 absolute w-full transition-colors"
+            id="mobile-menu">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
+                <a href="#tratamentos"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Tratamentos</a>
+                <a href="#sobre"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">A Clínica</a>
+                <a href="#conveniencias"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Conveniências</a>
+                <a href="#localizacao"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Localização</a>
+                <a href="#faq"
+                    class="block px-3 py-2 text-peau-dark font-medium hover:text-peau-rose hover:bg-peau-light rounded-md">Dúvidas</a>
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+                    class="block mt-4 text-center bg-peau-rose text-white px-3 py-2 rounded-md font-medium">Agendar
+                    Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+                <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-rose/10 text-peau-rosedark font-medium text-sm">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Mais de 12 anos de experiência
+                    </div>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-peau-dark">
+                        A sua beleza na sua forma mais <span class="text-peau-rose italic">extraordinária</span>.
+                    </h1>
+                    <p class="text-lg text-peau-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Na Peau Santé, combinamos tecnologia avançada, protocolos exclusivos e um olhar clínico refinado para realçar a sua estética mantendo sempre a sua essência e naturalidade.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#"
+                            onclick="openLeadModal(event, 'Olá, gostaria de saber mais sobre a clínica e agendar uma consulta.')"
+                            class="flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsappdark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Falar com Especialista
+                        </a>
+                        <a href="#tratamentos"
+                            class="flex items-center justify-center gap-2 bg-peau-card border border-peau-rose/30 text-peau-dark hover:bg-peau-light px-8 py-4 rounded-full font-medium text-lg transition-all">
+                            Ver Tratamentos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative">
+                    <div
+                        class="absolute inset-0 bg-peau-rose/20 rounded-t-full rounded-b-3xl transform rotate-3 scale-105">
+                    </div>
+                    <!-- Classe padrão rounded-b-3xl para evitar erros de compilação em produção -->
+                    <div
+                        class="relative rounded-t-full rounded-b-3xl shadow-2xl w-full h-[500px] lg:h-[600px] border-4 border-peau-card transition-colors overflow-hidden group">
+                        <!-- Imagem do Banner Principal -->
+                        <img src="/assets/images/institucional-banner.webp" fetchpriority="high" decoding="async"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Banner Peau Santé">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tratamentos Section -->
+    <section class="py-20 bg-peau-light transition-colors" id="tratamentos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Protocolos de Excelência</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Nossos Tratamentos</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Descubra os procedimentos faciais mais procurados na nossa clínica para revitalizar, harmonizar e rejuvenescer a sua pele com máxima segurança.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tratamento 1: Botox -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 bg-peau-rose text-white text-xs font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Mais Procurado</div>
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="scan-face" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Toxina Botulínica</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Suavize linhas de expressão e previna rugas de forma elegante e natural. Indicado para testa, glabela, pés de galinha, sorriso gengival e contorno facial.</p>
+                    
+                    <a href="/botox/" 
+                        class="w-full block text-center bg-peau-rose hover:bg-peau-rosedark text-white font-medium py-3 rounded-xl transition-colors mt-auto shadow-md">
+                        Detalhes do Tratamento
+                    </a>
+                </div>
+
+                <!-- Tratamento 2: Limpeza de Pele -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full group">
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="droplets" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Limpeza de Pele</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Remoção profunda de cravos, miliuns e impurezas. Um cuidado essencial para controlar a oleosidade, prevenir a acne e devolver o brilho e a maciez ao seu rosto.</p>
+                    
+                    <a href="/limpeza-de-pele/" 
+                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">
+                        Detalhes do Tratamento
+                    </a>
+                </div>
+
+                <!-- Tratamento 3: Harmonização / Genérico -->
+                <div
+                    class="bg-peau-card rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-peau-rose/30 flex flex-col h-full group">
+                    <div
+                        class="w-12 h-12 bg-peau-light rounded-2xl flex items-center justify-center text-peau-rose mb-6">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-peau-dark mb-2 group-hover:text-peau-rose transition-colors">Tratamentos Faciais</h3>
+                    <p class="text-sm text-peau-gray leading-relaxed mb-6">Trabalhamos com uma gama completa de protocolos faciais personalizados para hidratação profunda, bioestimuladores de colágeno e harmonização facial.</p>
+                    
+                    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de conhecer os outros tratamentos faciais disponíveis na Peau Santé.')"
+                        class="w-full block text-center bg-peau-light hover:bg-peau-rose hover:text-white text-peau-dark border border-peau-rose/20 font-medium py-3 rounded-xl transition-colors mt-auto shadow-sm">
+                        Falar com a Clínica
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Especialista / Clínica -->
+    <section class="py-20 bg-peau-card transition-colors" id="sobre">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Imagem com Loading Lazy para perfomance -->
+                <div class="w-full lg:w-1/2">
+                    <img src="/assets/images/institucional-recepcao.webp" alt="Nossa Clínica"
+                         loading="lazy" decoding="async" width="600" height="750"
+                        class="rounded-3xl shadow-2xl w-full object-cover aspect-[4/5] object-center">
+                </div>
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <div>
+                        <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">A Essência Peau Santé</span>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Experiência, Cuidado e Ciência a favor da sua pele.</h2>
+                        <p class="text-peau-gray leading-relaxed">
+                            Fundada com a missão de transformar o conceito de estética em Santo André, a Peau Santé prioriza a harmonia e o respeito às características únicas de cada paciente. 
+                        </p>
+                        <p class="text-peau-gray leading-relaxed mt-4">
+                            Sob o comando de uma <strong>especialista com mais de 12 anos de atuação</strong>, garantimos um ambiente seguro, acolhedor e equipado com os melhores produtos e tecnologias do mercado.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6 mt-8">
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
+                            <span class="text-peau-dark font-medium">Protocolos baseados em comprovação científica.</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
+                            <span class="text-peau-dark font-medium">Consulta minuciosa antes de qualquer procedimento.</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
+                            <span class="text-peau-dark font-medium">Atendimento humanizado focado nos seus objetivos.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <a href="#"
+                            onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta com a especialista.')"
+                            class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
+                            Agendar Consulta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conveniências Section -->
+    <section class="py-20 bg-peau-light transition-colors" id="conveniencias">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Seu Conforto</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Nossas Conveniências</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Pensamos em cada detalhe para que a sua experiência na Peau Santé seja relaxante, completa e sem preocupações.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <!-- Estacionamento -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="car" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">Estacionamento</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Local de fácil acesso com estacionamento e serviço de manobrista para o seu conforto e segurança.</p>
+                    </div>
+                </div>
+
+                <!-- Elevador -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="arrow-up-down" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">Elevador</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Nosso prédio conta com elevadores modernos para garantir acessibilidade a todos os pacientes.</p>
+                    </div>
+                </div>
+
+                <!-- Wi-Fi -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="wifi" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">Wi-Fi Gratuito</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Conexão de internet de alta velocidade à sua disposição durante toda a sua permanência.</p>
+                    </div>
+                </div>
+
+                <!-- Café Especial -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="coffee" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">Café Especial</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Desfrute de um café Dolce Gusto ou chás selecionados enquanto aguarda o seu atendimento.</p>
+                    </div>
+                </div>
+
+                <!-- Cartões -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="credit-card" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">Cartões Aceitos</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Aceitamos pagamentos via cartões de crédito e débito de todas as principais bandeiras.</p>
+                    </div>
+                </div>
+
+                <!-- PIX e Link -->
+                <div class="flex items-start gap-4">
+                    <div class="bg-peau-card p-4 rounded-2xl text-peau-rose shrink-0 shadow-sm border border-peau-rose/10">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-peau-dark mb-1 text-lg">PIX e Link de Pagamento</h4>
+                        <p class="text-sm text-peau-gray leading-relaxed">Oferecemos métodos digitais rápidos e seguros para sua maior comodidade na hora de pagar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Localização (Waze e Google Maps) -->
+    <!-- Fundo ajustado para bg-peau-card para manter o padrão listrado da página -->
+    <section class="py-20 bg-peau-card transition-colors" id="localizacao">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Box ajustado para bg-peau-light para gerar o contraste correto com o novo fundo -->
+            <div class="bg-peau-light rounded-3xl shadow-xl border border-peau-rose/10 overflow-hidden flex flex-col lg:flex-row">
+                
+                <!-- Informações e Botões -->
+                <div class="w-full lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                    <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Como Chegar</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-6">Visite a nossa Clínica</h2>
+                    
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="bg-peau-card p-3 rounded-full text-peau-rose shadow-sm border border-peau-rose/5">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-peau-dark text-lg">Endereço</h4>
+                            <p class="text-peau-gray mt-1 leading-relaxed">
+                                Av. Industrial, 780 - Jardim<br>
+                                Santo André - SP<br>
+                                CEP: 09080-500
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 mb-10">
+                        <div class="bg-peau-card p-3 rounded-full text-peau-rose shadow-sm border border-peau-rose/5">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-peau-dark text-lg">Horário de Funcionamento</h4>
+                            <p class="text-peau-gray mt-1 leading-relaxed">Atendimento exclusivo com horário marcado.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-peau-dark font-medium mb-4">Escolha a sua rota:</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <!-- Link Google Maps -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=Av.+Industrial,+780+-+Jardim,+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center justify-center gap-2 bg-white dark:bg-peau-card border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all shadow-sm flex-1">
+                            <i data-lucide="map" class="w-5 h-5 text-[#4285F4]"></i> Google Maps
+                        </a>
+                        
+                        <!-- Link Waze -->
+                        <a href="https://www.waze.com/ul?q=Av.%20Industrial%2C%20780%20Santo%20Andr%C3%A9" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center justify-center gap-2 bg-white dark:bg-peau-card border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all shadow-sm flex-1">
+                            <i data-lucide="navigation" class="w-5 h-5 text-[#33ccff]"></i> Waze
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mapa / Imagem da Fachada -->
+                <div class="w-full lg:w-1/2 bg-gray-200 relative min-h-[300px]">
+                    <!-- Imagem representativa do mapa ou da fachada da clínica -->
+                    <img src="/assets/images/institucional-banner.webp" loading="lazy" decoding="async" alt="Localização Peau Santé" class="absolute inset-0 w-full h-full object-cover">
+                    
+                    <!-- Overlay escuro suave no tema escuro -->
+                    <div class="absolute inset-0 bg-black/10 dark:bg-black/40"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dúvidas Frequentes (FAQ Geral) -->
+    <!-- Fundo ajustado para bg-peau-light para manter o padrão listrado da página -->
+    <section class="py-20 bg-peau-light transition-colors" id="faq">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Informações Úteis</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Dúvidas Frequentes</h2>
+                <p class="text-peau-gray">Principais perguntas sobre o funcionamento da clínica.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Details ajustado para bg-peau-card para gerar o contraste correto -->
+                <details
+                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Como funciona a primeira consulta?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        A consulta é um momento fundamental onde nossa especialista escuta os seus desejos, analisa a qualidade da sua pele e a musculatura facial. Com base nisso, montamos um plano de tratamento personalizado para garantir os melhores resultados com segurança.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Quais são as formas de pagamento aceites?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Aceitamos pagamentos via PIX, cartões de débito e crédito. Consulte nossa equipe de atendimento no WhatsApp para entender as condições de parcelamento de acordo com o tratamento escolhido.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Homens também podem fazer os tratamentos?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Com certeza! A estética avançada é para todos. Temos protocolos e técnicas adaptadas para a anatomia e as características específicas da pele e musculatura masculina, sempre buscando um resultado natural.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-card rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Os procedimentos são feitos no mesmo dia da consulta?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Na maioria dos casos, sim. Se o paciente desejar e não houver nenhuma contraindicação detectada durante a consulta inicial, podemos iniciar o protocolo (como a aplicação de Toxina Botulínica ou Limpeza de Pele) imediatamente a seguir.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-peau-card border-t border-peau-rose/20 pt-16 pb-8 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-peau-rose/10 pb-12">
+                <div>
+                    <!-- Dimensões fixas removidas -->
+                    <img src="/assets/images/logo-tema-claro.png" loading="lazy" class="h-20 w-auto mx-auto md:mx-0 dark:hidden"
+                        alt="Peau Santé">
+                    <img src="/assets/images/logo.png" loading="lazy" class="h-20 w-auto mx-auto md:mx-0 hidden dark:block"
+                        alt="Peau Santé">
+                    <p class="text-peau-gray text-sm mt-4">Centro de Biomedicina e Estética Avançada. Referência em
+                        tratamentos focados na naturalidade e saúde da pele.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-peau-dark mb-4 uppercase text-sm tracking-widest">Contato</h4>
+                    <p class="text-peau-gray text-sm">Av. Industrial, 780 - Jardim<br>Santo André - SP, 09080-500</p>
+                    <p class="text-peau-rose font-bold mt-2">(11) 99309-2933</p>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-peau-dark mb-4 uppercase text-sm tracking-widest">Siga-nos</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/peauetsante/" target="_blank" rel="noopener noreferrer"
+                            class="text-peau-gray hover:text-peau-rose transition-colors"><i
+                                data-lucide="instagram"></i></a>
+                        <a href="https://www.facebook.com/peausante" target="_blank" rel="noopener noreferrer"
+                            class="text-peau-gray hover:text-peau-rose transition-colors"><i
+                                data-lucide="facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
+                <p class="text-peau-gray text-xs">&copy; 2026 Peau Santé Biomedicina Estética. Todos os direitos
+                    reservados.</p>
+                <p class="text-peau-gray text-xs">CNPJ: 18.416.452/0001-14</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na clínica.')"
+        class="fixed bottom-6 right-6 z-[90] bg-whatsapp text-white p-4 rounded-full shadow-2xl flex items-center justify-center btn-float-wa transition-all hover:scale-110"
+        aria-label="Agendar via WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
+    <!-- Lead Modal -->
+    <div id="lead-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden items-center justify-center px-4 transition-all">
+        <div class="bg-peau-card w-full max-w-md rounded-3xl p-8 relative shadow-2xl">
+            <button onclick="closeLeadModal()"
+                class="absolute top-4 right-4 text-peau-gray hover:text-peau-rose transition-colors"
+                aria-label="Fechar"><i data-lucide="x"></i></button>
+            <div class="text-center mb-6">
+                <!-- Dimensões fixas removidas -->
+                <img src="/assets/images/logo-tema-claro.png" class="h-14 w-auto mx-auto block dark:hidden" alt="Peau Santé">
+                <img src="/assets/images/logo.png" class="h-14 w-auto mx-auto hidden dark:block" alt="Peau Santé">
+                <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
+                <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu atendimento.</p>
+            </div>
+            <form id="leadForm" onsubmit="submitLead(event)" class="space-y-4">
+                <input type="text" id="leadName" required placeholder="Nome Completo"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <input type="email" id="leadEmail" required placeholder="E-mail"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <input type="tel" id="leadPhone" required maxlength="15" placeholder="WhatsApp (00) 00000-0000"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <div class="flex items-start gap-2">
+                    <input type="checkbox" id="lgpdConsent" required class="mt-1 accent-peau-rose cursor-pointer">
+                    <label for="lgpdConsent" class="text-xs text-peau-gray leading-tight cursor-pointer">Concordo com a
+                        <a href="/politica-privacidade.html" target="_blank" class="underline">Política de
+                            Privacidade</a> e autorizo o uso dos meus dados conforme a LGPD.</label>
+                </div>
+                <button type="submit" id="submitLeadBtn" disabled
+                    class="w-full bg-whatsapp hover:bg-whatsappdark disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold text-lg transition-all shadow-md">Continuar
+                    para o WhatsApp</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Scripts Modificados para Alta Performance -->
+    <script>
+        // Envolve o código num evento DOMContentLoaded para não travar a renderização do HTML
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            const btnMobile = document.getElementById('mobile-menu-btn');
+            const menuMobile = document.getElementById('mobile-menu');
+            if (btnMobile) {
+                btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
+            }
+
+            // Máscara de Telefone
+            const phoneInput = document.getElementById('leadPhone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, "");
+                    if (value.length > 11) value = value.slice(0, 11);
+                    if (value.length > 10) {
+                        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+                    } else if (value.length > 5) {
+                        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                    } else if (value.length > 2) {
+                        value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
+                    } else if (value.length > 0) {
+                        value = value.replace(/^(\d{0,2}).*/, "($1");
+                    }
+                    e.target.value = value;
+                });
+            }
+
+            const lgpdCheckbox = document.getElementById('lgpdConsent');
+            if (lgpdCheckbox) {
+                lgpdCheckbox.addEventListener('change', function () {
+                    document.getElementById('submitLeadBtn').disabled = !this.checked;
+                });
+            }
+        });
+
+        // Funções mantidas no escopo global para funcionarem com os botões (onclick)
+        function changeFontSize(s, r) {
+            let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
+            f = Math.max(85, Math.min(130, f));
+            document.documentElement.style.fontSize = f + '%';
+            localStorage.setItem('fontSize', f);
+        }
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        function openLeadModal(e, m) {
+            if (e) e.preventDefault(); window.currentWaMsg = m;
+            document.getElementById('lead-modal').classList.replace('hidden', 'flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLeadModal() {
+            document.getElementById('lead-modal').classList.replace('flex', 'hidden');
+            document.body.style.overflow = '';
+        }
+        function submitLead(e) {
+            e.preventDefault();
+            const name = document.getElementById('leadName').value;
+            const email = document.getElementById('leadEmail').value;
+            const phone = document.getElementById('leadPhone').value;
+
+            const msg = `${window.currentWaMsg}\n\n*Dados do Contato:*\nNome: ${name}\nE-mail: ${email}\nWhatsApp: ${phone}`;
+
+            window.open(`https://wa.me/5511993092933?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+            closeLeadModal();
+        }
+    </script>
 </body>
 
 </html>
