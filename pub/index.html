@@ -455,31 +455,33 @@
                     diretamente do Google.</p>
             </div>
 
-            <!-- INTEGRAÇÃO DO WIDGET (Exemplo via Elfsight) -->
-            <!-- Instruções: Crie uma conta gratuita em elfsight.com, gere um widget de 'Google Reviews', e coloque o ID abaixo. -->
-            <div class="w-full flex justify-center items-center min-h-[300px] mb-8">
-                <!-- O Script base do Elfsight que carrega os dados -->
-                <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <!-- INTEGRAÇÃO OFICIAL GOOGLE PLACES API (LAZY LOAD) -->
+            <div class="w-full relative min-h-[300px]">
+                
+                <!-- Loader exibido antes do script carregar as avaliações -->
+                <div id="google-reviews-loader" class="absolute inset-0 flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 border-4 border-peau-rose border-t-transparent rounded-full animate-spin mb-4"></div>
+                    <p class="text-peau-gray text-sm">Carregando experiências reais...</p>
+                </div>
 
-                <!-- A DIV que vai receber as avaliações (Substitua 'SUA-CHAVE-ID-AQUI' pelo ID gerado) -->
-                <!-- Exemplo de como ficará o seu código: <div class="elfsight-app-12345678-abcd-1234-abcd-1234567890ab"></div> -->
-                <div class="elfsight-app-SUA-CHAVE-ID-AQUI" data-elfsight-app-lazy>
-                    <!-- Fallback Visual enquanto não coloca o ID real -->
-                    <div
-                        class="text-center p-8 bg-peau-light rounded-2xl border border-peau-rose/20 border-dashed w-full max-w-3xl">
-                        <i data-lucide="star" class="w-8 h-8 text-yellow-400 mx-auto mb-3 fill-current"></i>
-                        <p class="text-peau-dark font-medium mb-2">As avaliações do Google aparecerão aqui.</p>
-                        <p class="text-sm text-peau-gray">Insira o ID do seu widget de avaliações no código HTML.</p>
-                    </div>
+                <!-- Container onde os cards serão injetados dinamicamente via Javascript -->
+                <div id="google-reviews-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden opacity-0 transition-opacity duration-700">
                 </div>
             </div>
 
-            <div class="text-center mt-8">
+            <div class="text-center mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <!-- Botão Ver Todas -->
+                <a href="https://g.page/r/CbkVPPZtKDyIEAE" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg w-full sm:w-auto">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    Ver todas as avaliações
+                </a>
+
                 <!-- Botão direto para o Google Meu Negócio -->
                 <a href="https://g.page/r/CbkVPPZtKDyIEAE/review" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center gap-2 bg-white dark:bg-peau-light border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-8 py-4 rounded-full font-medium text-lg transition-all shadow-sm hover:shadow-md">
+                    class="inline-flex items-center justify-center gap-2 bg-white dark:bg-peau-light border border-gray-200 dark:border-peau-rose/20 text-peau-dark hover:bg-gray-50 px-8 py-4 rounded-full font-medium text-lg transition-all shadow-sm hover:shadow-md w-full sm:w-auto">
                     <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-current"></i>
-                    Deixe sua avaliação no Google
+                    Avaliar no Google
                 </a>
             </div>
         </div>
@@ -819,6 +821,106 @@
         });
 
         setTimeout(carregarScriptsTerceiros, 3500);
+
+        // =========================================================================
+        // LAZY LOAD: GOOGLE PLACES API (AVALIAÇÕES)
+        // =========================================================================
+        const avaliacoesSection = document.getElementById('avaliacoes');
+        let googleScriptInjected = false;
+
+        if (avaliacoesSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Quando usuário chegar a 300px da seção, injetamos a API do Google
+                    if (entry.isIntersecting && !googleScriptInjected) {
+                        googleScriptInjected = true;
+                        const script = document.createElement('script');
+                        // ATENÇÃO: SUBSTITUA SUA_API_KEY_AQUI PELA SUA CHAVE DO GOOGLE CLOUD
+                        script.src = "https://maps.googleapis.com/maps/api/js?key=SUA_API_KEY_AQUI&libraries=places&callback=initGoogleReviews";
+                        script.async = true;
+                        script.defer = true;
+                        document.body.appendChild(script);
+                        observer.disconnect();
+                    }
+                });
+            }, { rootMargin: '300px' });
+            observer.observe(avaliacoesSection);
+        }
+
+        // Função chamada pelo Google Maps após carregar a API
+        window.initGoogleReviews = function() {
+            const request = {
+                // ATENÇÃO: SUBSTITUA SEU_PLACE_ID_AQUI PELO PLACE ID DA CLÍNICA
+                placeId: 'SEU_PLACE_ID_AQUI',
+                fields: ['name', 'rating', 'user_ratings_total', 'reviews']
+            };
+
+            const divVirtual = document.createElement('div');
+            const service = new google.maps.places.PlacesService(divVirtual);
+            
+            service.getDetails(request, (place, status) => {
+                const loader = document.getElementById('google-reviews-loader');
+                const container = document.getElementById('google-reviews-container');
+                
+                if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
+                    if (loader) loader.style.display = 'none';
+                    if (container) {
+                        container.classList.remove('hidden');
+                        
+                        // Renderizar no máximo 3 avaliações (estéticas p/ não poluir) das que possuem as maiores estrelas e texto mais longo
+                        const bestReviews = place.reviews
+                            .filter(r => r.rating >= 4 && r.text && r.text.length > 20)
+                            .sort((a, b) => b.rating - a.rating || b.text.length - a.text.length)
+                            .slice(0, 3);
+                        
+                        let html = '';
+                        bestReviews.forEach(review => {
+                            const starsHtml = Array(5).fill(0).map((_, i) => 
+                                `<i data-lucide="star" class="w-4 h-4 ${i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}"></i>`
+                            ).join('');
+                            
+                            // fallback avatar em caso de erro da url de imagem do google
+                            const photoUrl = review.profile_photo_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(review.author_name) + '&background=fce7f3&color=9d174d';
+                            
+                            html += `
+                            <div class="bg-peau-card dark:bg-peau-light p-6 rounded-3xl border border-peau-rose/10 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <div class="flex items-center gap-4 mb-5">
+                                    <img src="${photoUrl}" alt="${review.author_name}" loading="lazy" class="w-12 h-12 rounded-full object-cover shadow-sm bg-white" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(review.author_name)}&background=fce7f3&color=9d174d'">
+                                    <div>
+                                        <h5 class="font-bold text-peau-dark text-sm">${review.author_name}</h5>
+                                        <div class="flex mt-1">${starsHtml}</div>
+                                    </div>
+                                </div>
+                                <p class="text-peau-gray text-sm leading-relaxed flex-grow italic font-medium">"${review.text}"</p>
+                                <div class="mt-4 pt-4 border-t border-peau-rose/5 flex items-center gap-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="w-4 h-4 grayscale opacity-50">
+                                    <span class="text-xs text-peau-gray/60 font-semibold tracking-wider uppercase">Google Review</span>
+                                </div>
+                            </div>
+                            `;
+                        });
+                        
+                        container.innerHTML = html;
+                        
+                        // Atualizar ícones lucide novos
+                        if (typeof lucide !== 'undefined') {
+                            lucide.createIcons();
+                        }
+
+                        // Fade-in effect
+                        requestAnimationFrame(() => {
+                            container.classList.remove('opacity-0');
+                            container.classList.add('opacity-100');
+                        });
+                    }
+                } else {
+                    // Erro: mostrar fallback
+                    if (loader) {
+                        loader.innerHTML = '<div class="p-6 bg-red-50 text-red-600 rounded-xl border border-red-100 text-sm font-medium">As avaliações do Google ainda não estão configuradas corretamente. (Chave API ou Place ID faltando)</div>';
+                    }
+                }
+            });
+        };
     </script>
 </body>
 
