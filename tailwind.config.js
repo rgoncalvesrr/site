@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./*.{html,js,php}",
-    "./**/*.{html,js,php}"
+    "./pub/**/*.{html,js}",
+    "./input.css"
   ],
   darkMode: 'class',
   safelist: ['dark'],
@@ -19,8 +19,8 @@ module.exports = {
           card: 'rgb(var(--color-peau-card) / <alpha-value>)',
           inverse: 'rgb(var(--color-peau-inverse) / <alpha-value>)',
         },
-        whatsapp: '#25D366',
-        whatsappdark: '#1ea952'
+        whatsapp: '#128C7E',
+        whatsappdark: '#0E6B5F'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
