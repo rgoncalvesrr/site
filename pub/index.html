@@ -12,7 +12,7 @@
 
     <!-- SEO Básico -->
     <meta name="description"
-        content="Clínica de Estética Avançada em Santo André. Realce sua beleza natural com tratamentos faciais e corporais personalizados. Agende sua consulta com nossa especialista!">
+        content="Clínica de Estética Avançada em Santo André com a Dra. Rosana Pereira. Tratamentos faciais personalizados. Agende sua avaliação!">
     <meta name="keywords"
         content="Clínica de Estética, Santo André, Estética Avançada, Botox, Limpeza de Pele, Rejuvenescimento, Peau Santé, Harmonização Facial">
     <meta name="author" content="Peau Santé">
@@ -38,7 +38,7 @@
     <link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Tailwind CSS Minificado com versão atualizada para quebrar o cache -->
-    <link rel="stylesheet" href="/assets/css/style.min.css?v=1.4">
+    <link rel="stylesheet" href="/assets/css/style.min.css?v=1.5">
 
     <!-- Lucide Icons com atributo DEFER para não bloquear a renderização HTML -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -55,7 +55,7 @@
     </script>
 </head>
 
-<body class="bg-peau-light text-peau-dark font-sans antialiased transition-colors duration-300">
+<body class="bg-peau-light text-peau-dark font-sans antialiased transition-colors duration-300 pb-24 lg:pb-0">
 
     <!-- Navbar -->
     <header
@@ -111,10 +111,10 @@
                     </button>
 
                     <!-- Botão Agendar Desktop -->
-                    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+                    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma avaliação na Peau Santé.')"
                         class="hidden lg:flex items-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-5 xl:px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
-                        Agendar Consulta
+                        Agendar Avaliação
                     </a>
 
                     <!-- Botão Menu Hambúrguer Mobile -->
@@ -164,9 +164,9 @@
                     </div>
                 </div>
 
-                <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na Peau Santé.')"
+                <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma avaliação na Peau Santé.')"
                     class="block mt-6 text-center bg-peau-rose text-white px-4 py-3 rounded-xl font-bold shadow-md">Agendar
-                    Agora</a>
+                    Avaliação</a>
             </div>
         </div>
     </header>
@@ -178,26 +178,31 @@
                 <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
                     <div
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-rose/10 text-peau-rosedark font-medium text-sm">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i> Mais de 12 anos de experiência
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Dra. Rosana Pereira · +12 anos em Santo André
                     </div>
                     <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-peau-dark">
                         A sua beleza na sua forma mais <span class="text-peau-rose italic">extraordinária</span>.
                     </h1>
                     <p class="text-lg text-peau-gray max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Na Peau Santé, combinamos tecnologia avançada, protocolos exclusivos e um olhar clínico refinado
-                        para realçar a sua estética mantendo sempre a sua essência e naturalidade.
+                        Avaliação personalizada, protocolos seguros e resultados naturais. Agende pelo WhatsApp —
+                        valores definidos após a análise da sua pele, sem compromisso.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                         <a href="#"
-                            onclick="openLeadModal(event, 'Olá, gostaria de saber mais sobre a clínica e agendar uma consulta.')"
-                            class="flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsappdark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i> Falar com Especialista
+                            onclick="openLeadModal(event, 'Olá, gostaria de agendar uma avaliação na Peau Santé.')"
+                            class="flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i data-lucide="calendar" class="w-5 h-5"></i> Agendar Avaliação
                         </a>
-                        <a href="#tratamentos"
-                            class="flex items-center justify-center gap-2 bg-peau-card border border-peau-rose/30 text-peau-dark hover:bg-peau-light px-8 py-4 rounded-full font-medium text-lg transition-all">
-                            Ver Tratamentos
+                        <a href="#"
+                            onclick="openWhatsApp(event, 'Olá! Quero tirar uma dúvida sobre os tratamentos da Peau Santé.', 'hero_whatsapp')"
+                            class="flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsappdark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Falar no WhatsApp
                         </a>
                     </div>
+                    <p class="text-sm text-peau-gray flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 pt-2">
+                        <span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4 text-peau-rose"></i> Seg–Sáb · horário marcado</span>
+                        <span class="inline-flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4 text-peau-rose"></i> Resposta rápida no WhatsApp</span>
+                    </p>
                 </div>
 
                 <div class="w-full lg:w-1/2 relative">
@@ -307,44 +312,51 @@
                 </div>
                 <div class="w-full lg:w-1/2 space-y-8">
                     <div>
-                        <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">A Essência Peau
-                            Santé</span>
+                        <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Dra. Rosana Pereira</span>
                         <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Experiência,
-                            Cuidado e Ciência a favor da sua pele.</h2>
+                            cuidado e ciência a favor da sua pele.</h2>
                         <p class="text-peau-gray leading-relaxed">
-                            Fundada com a missão de transformar o conceito de estética em Santo André, a Peau Santé
-                            prioriza a harmonia e o respeito às características únicas de cada paciente.
+                            Clínica de <strong>Biomedicina Estética</strong> em Santo André, ativa desde 2013. Priorizamos
+                            harmonia, naturalidade e o respeito às características únicas de cada paciente.
                         </p>
                         <p class="text-peau-gray leading-relaxed mt-4">
-                            Sob o comando de uma <strong>especialista com mais de 12 anos de atuação</strong>,
-                            garantimos um ambiente seguro, acolhedor e equipado com os melhores produtos e tecnologias
-                            do mercado.
+                            Sob o cuidado da <strong>Dra. Rosana Pereira</strong>, especialista com mais de 12 anos de
+                            atuação, em ambiente seguro, acolhedor e com produtos e tecnologias de referência.
                         </p>
                     </div>
 
-                    <div class="space-y-6 mt-8">
+                    <div class="flex flex-wrap gap-3">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-light border border-peau-rose/20 text-sm font-medium text-peau-dark">
+                            <i data-lucide="badge-check" class="w-4 h-4 text-peau-rose"></i> Dra. Rosana Pereira
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-light border border-peau-rose/20 text-sm font-medium text-peau-dark">
+                            <i data-lucide="calendar-check" class="w-4 h-4 text-peau-rose"></i> Desde 2013
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-peau-light border border-peau-rose/20 text-sm font-medium text-peau-dark">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-peau-rose"></i> Santo André · ABC
+                        </span>
+                    </div>
+
+                    <div class="space-y-6 mt-4">
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Protocolos baseados em comprovação
-                                científica.</span>
+                            <span class="text-peau-dark font-medium">Protocolos baseados em comprovação científica.</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Consulta minuciosa antes de qualquer
-                                procedimento.</span>
+                            <span class="text-peau-dark font-medium">Avaliação minuciosa antes de qualquer procedimento.</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-peau-rose flex-shrink-0"></i>
-                            <span class="text-peau-dark font-medium">Atendimento humanizado focado nos seus
-                                objetivos.</span>
+                            <span class="text-peau-dark font-medium">Resultado natural, alinhado aos seus objetivos.</span>
                         </div>
                     </div>
 
                     <div class="pt-6">
                         <a href="#"
-                            onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta com a especialista.')"
+                            onclick="openLeadModal(event, 'Olá, gostaria de agendar uma avaliação com a Dra. Rosana Pereira.')"
                             class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
-                            Agendar Consulta
+                            Agendar Avaliação
                         </a>
                     </div>
                 </div>
@@ -444,42 +456,132 @@
         </div>
     </section>
 
-    <!-- Avaliações do Google Automáticas Section -->
-    <section class="py-20 bg-peau-card transition-colors" id="avaliacoes">
+    <!-- Resultados / Antes e Depois -->
+    <section class="py-20 bg-peau-card transition-colors" id="resultados">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Antes e Depois</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">Resultados reais</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Naturalidade e suavização de linhas — pacientes reais da Peau Santé.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <a href="/botox/" class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group block">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/peausante-glabela.webp" loading="lazy" decoding="async"
+                            alt="Antes e depois — glabela"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">Antes</span>
+                        <span class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-bold text-peau-dark text-lg mb-2">Toxina Botulínica · Glabela</h4>
+                        <p class="text-peau-gray text-sm leading-relaxed">Aspecto mais descansado e sereno, sem perder a expressão.</p>
+                    </div>
+                </a>
+                <a href="/limpeza-de-pele/" class="bg-peau-light rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-peau-rose/10 group block">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/images/pele-resultado-1.webp" loading="lazy" decoding="async"
+                            alt="Antes e depois — limpeza de pele"
+                            class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute top-4 left-4 bg-peau-inverse/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">Antes</span>
+                        <span class="absolute bottom-4 left-4 bg-peau-rose/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">Depois</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-bold text-peau-dark text-lg mb-2">Limpeza de Pele</h4>
+                        <p class="text-peau-gray text-sm leading-relaxed">Pele renovada, poros desobstruídos e textura mais uniforme.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#"
+                    onclick="openLeadModal(event, 'Olá, vi os resultados e quero agendar uma avaliação na Peau Santé.')"
+                    class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg">
+                    Quero este resultado
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avaliações Google -->
+    <section class="py-20 bg-peau-light transition-colors" id="avaliacoes">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Experiências Reais</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">O que dizem nossas
-                    pacientes</h2>
-                <p class="text-peau-gray max-w-2xl mx-auto">A satisfação de quem já transformou a sua pele connosco,
-                    diretamente do Google.</p>
-            </div>
-
-            <!-- INTEGRAÇÃO OFICIAL GOOGLE PLACES API (LAZY LOAD) -->
-            <div class="w-full relative min-h-[300px]">
-                
-                <!-- Loader exibido antes do script carregar as avaliações -->
-                <div id="google-reviews-loader" class="absolute inset-0 flex flex-col items-center justify-center">
-                    <div class="w-10 h-10 border-4 border-peau-rose border-t-transparent rounded-full animate-spin mb-4"></div>
-                    <p class="text-peau-gray text-sm">Carregando experiências reais...</p>
-                </div>
-
-                <!-- Container onde os cards serão injetados dinamicamente via Javascript -->
-                <div id="google-reviews-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden opacity-0 transition-opacity duration-700">
+                <span class="text-peau-rose font-medium tracking-wider uppercase text-sm">Experiências reais</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-peau-dark mt-2 mb-4">O que dizem nossas pacientes</h2>
+                <p class="text-peau-gray max-w-2xl mx-auto">Avaliações verificadas no Google · nota <strong class="text-peau-dark">5,0</strong> com base em 12 avaliações.</p>
+                <div class="flex justify-center gap-1 mt-4 text-yellow-400" aria-label="5 de 5 estrelas">
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                 </div>
             </div>
 
-            <div class="text-center mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <!-- Botão Ver Todas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <article class="bg-peau-card p-6 rounded-3xl border border-peau-rose/10 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-12 rounded-full bg-peau-rose/15 text-peau-rosedark font-bold flex items-center justify-center">ES</div>
+                        <div>
+                            <h5 class="font-bold text-peau-dark text-sm">Elenice Santm</h5>
+                            <div class="flex mt-1 text-yellow-400">
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-peau-gray text-sm leading-relaxed flex-grow italic">"Excelente profissional! Delicada, atenciosa e muito competente. Me senti super segura em todos os procedimentos que já realizei — botox, limpezas de pele e até procedimentos mais invasivos. Super recomendo!"</p>
+                    <div class="mt-4 pt-4 border-t border-peau-rose/10 text-xs text-peau-gray/70 font-semibold tracking-wider uppercase">Google Review</div>
+                </article>
+
+                <article class="bg-peau-card p-6 rounded-3xl border border-peau-rose/10 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-12 rounded-full bg-peau-rose/15 text-peau-rosedark font-bold flex items-center justify-center">CS</div>
+                        <div>
+                            <h5 class="font-bold text-peau-dark text-sm">Claudia Sousa</h5>
+                            <div class="flex mt-1 text-yellow-400">
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-peau-gray text-sm leading-relaxed flex-grow italic">"Profissional super atenciosa e cuidadosa. Faço botox, limpeza de pele e bioestimulador — tratamentos sempre muito bem feitos. Super indico, além de atender em um local charmoso e de fácil acesso."</p>
+                    <div class="mt-4 pt-4 border-t border-peau-rose/10 text-xs text-peau-gray/70 font-semibold tracking-wider uppercase">Google Review</div>
+                </article>
+
+                <article class="bg-peau-card p-6 rounded-3xl border border-peau-rose/10 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-12 rounded-full bg-peau-rose/15 text-peau-rosedark font-bold flex items-center justify-center">SP</div>
+                        <div>
+                            <h5 class="font-bold text-peau-dark text-sm">Suzi Piai</h5>
+                            <div class="flex mt-1 text-yellow-400">
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-peau-gray text-sm leading-relaxed flex-grow italic">"Excelente atendimento. Pontualidade e, mais importante, ótimos resultados. Sou cliente há anos e indico a Dra. Rosana de olhos fechados."</p>
+                    <div class="mt-4 pt-4 border-t border-peau-rose/10 text-xs text-peau-gray/70 font-semibold tracking-wider uppercase">Google Review</div>
+                </article>
+            </div>
+
+            <div class="text-center flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="https://g.page/r/CbkVPPZtKDyIEAE" target="_blank" rel="noopener noreferrer"
                     class="inline-flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-md hover:shadow-lg w-full sm:w-auto">
                     <i data-lucide="message-square" class="w-5 h-5"></i>
-                    Ver todas as avaliações
+                    Ver todas no Google
                 </a>
-
-                <!-- Botão direto para o Google Meu Negócio -->
                 <a href="https://g.page/r/CbkVPPZtKDyIEAE/review" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center gap-2 bg-white dark:bg-peau-light border border-gray-200 dark:border-peau-rose/20 text-peau-dark hover:bg-gray-50 px-8 py-4 rounded-full font-medium text-lg transition-all shadow-sm hover:shadow-md w-full sm:w-auto">
+                    class="inline-flex items-center justify-center gap-2 bg-peau-card border border-peau-rose/20 text-peau-dark hover:bg-white px-8 py-4 rounded-full font-medium text-lg transition-all shadow-sm w-full sm:w-auto">
                     <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-current"></i>
                     Avaliar no Google
                 </a>
@@ -488,7 +590,7 @@
     </section>
 
     <!-- Seção Localização (Waze e Google Maps) -->
-    <section class="py-20 bg-peau-light transition-colors" id="localizacao">
+    <section class="py-20 bg-peau-card transition-colors" id="localizacao">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
                 class="bg-peau-card rounded-3xl shadow-xl border border-peau-rose/10 overflow-hidden flex flex-col lg:flex-row">
@@ -506,9 +608,9 @@
                         <div>
                             <h4 class="font-bold text-peau-dark text-lg">Endereço</h4>
                             <p class="text-peau-gray mt-1 leading-relaxed">
-                                Av. Industrial, 780 - Jardim<br>
-                                Santo André - SP<br>
-                                CEP: 09080-500
+                                Av. Industrial, 780 · Sala 313<br>
+                                Jardim Park Business · Jardim<br>
+                                Santo André - SP · CEP 09080-500
                             </p>
                         </div>
                     </div>
@@ -519,15 +621,15 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-peau-dark text-lg">Horário de Funcionamento</h4>
-                            <p class="text-peau-gray mt-1 leading-relaxed">Atendimento exclusivo com horário marcado.
-                            </p>
+                            <p class="text-peau-gray mt-1 leading-relaxed">Segunda a sábado, com horário marcado.<br>
+                                Fecha às 18h · resposta rápida pelo WhatsApp.</p>
                         </div>
                     </div>
 
                     <p class="text-peau-dark font-medium mb-4">Escolha a sua rota:</p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <!-- Link Google Maps -->
-                        <a href="https://www.google.com/maps/search/?api=1&query=Av.+Industrial,+780+-+Jardim,+Santo+Andr%C3%A9+-+SP"
+                        <a href="https://www.google.com/maps?cid=9816765740508517817"
                             target="_blank" rel="noopener noreferrer"
                             class="flex items-center justify-center gap-2 bg-white dark:bg-peau-light border border-gray-200 dark:border-gray-700 text-peau-dark hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all shadow-sm flex-1">
                             <i data-lucide="map" class="w-5 h-5 text-[#4285F4]"></i> Google Maps
@@ -565,12 +667,26 @@
                 <details
                     class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-peau-dark">Quanto custa a avaliação / os tratamentos?</h4>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
+                        Os valores dependem do protocolo indicado para o seu caso (áreas, produto e objetivos). Na
+                        avaliação, montamos o plano e informamos o investimento com transparência — sem compromisso de
+                        fechar no mesmo dia. Peça uma estimativa pelo WhatsApp se preferir.
+                    </div>
+                </details>
+
+                <details
+                    class="group bg-peau-light rounded-2xl border border-peau-rose/10 overflow-hidden transition-all shadow-sm">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
                         <h4 class="font-bold text-peau-dark">Como funciona a primeira consulta?</h4>
                         <i data-lucide="chevron-down"
                             class="w-5 h-5 text-peau-rose transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-6 text-peau-gray text-sm leading-relaxed">
-                        A consulta é um momento fundamental onde nossa especialista escuta os seus desejos, analisa a
+                        A consulta é um momento fundamental onde a <strong>Dra. Rosana Pereira</strong> escuta os seus desejos, analisa a
                         qualidade da sua pele e a musculatura facial. Com base nisso, montamos um plano de tratamento
                         personalizado para garantir os melhores resultados com segurança.
                     </div>
@@ -659,10 +775,27 @@
         </div>
     </footer>
 
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="#" onclick="openLeadModal(event, 'Olá, gostaria de agendar uma consulta na clínica.')"
-        class="fixed bottom-6 right-6 z-[90] bg-whatsapp text-white p-4 rounded-full shadow-2xl flex items-center justify-center btn-float-wa transition-all hover:scale-110"
-        aria-label="Agendar via WhatsApp">
+    <!-- Sticky CTA Mobile -->
+    <div class="fixed bottom-0 inset-x-0 z-[85] lg:hidden p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-peau-card/95 backdrop-blur-md border-t border-peau-rose/20 shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
+        <div class="flex gap-2 max-w-lg mx-auto">
+            <a href="#"
+                onclick="openWhatsApp(event, 'Olá! Quero tirar uma dúvida sobre a Peau Santé.', 'sticky_whatsapp')"
+                class="flex-1 flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsappdark text-white py-3 rounded-xl font-semibold text-sm">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+            </a>
+            <a href="#"
+                onclick="openLeadModal(event, 'Olá, gostaria de agendar uma avaliação na Peau Santé.')"
+                class="flex-1 flex items-center justify-center gap-2 bg-peau-rose hover:bg-peau-rosedark text-white py-3 rounded-xl font-semibold text-sm">
+                <i data-lucide="calendar" class="w-4 h-4"></i> Agendar
+            </a>
+        </div>
+    </div>
+
+    <!-- Botão Flutuante WhatsApp (desktop / acima do sticky no mobile) -->
+    <a href="#"
+        onclick="openWhatsApp(event, 'Olá, gostaria de falar com a Peau Santé.', 'float_whatsapp')"
+        class="fixed bottom-24 right-6 lg:bottom-6 z-[90] bg-whatsapp text-white p-4 rounded-full shadow-2xl flex items-center justify-center btn-float-wa transition-all hover:scale-110"
+        aria-label="Falar no WhatsApp">
         <i data-lucide="message-circle" class="w-8 h-8"></i>
     </a>
 
@@ -677,15 +810,16 @@
                 <img src="/assets/images/logo-tema-claro.png" class="h-14 w-auto mx-auto block dark:hidden"
                     alt="Peau Santé">
                 <img src="/assets/images/logo.png" class="h-14 w-auto mx-auto hidden dark:block" alt="Peau Santé">
-                <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Quase lá!</h3>
-                <p class="text-peau-gray text-sm mt-1">Preencha os dados abaixo para agilizar o seu atendimento.</p>
+                <h3 class="font-serif text-2xl font-bold text-peau-dark mt-4">Agendar avaliação</h3>
+                <p class="text-peau-gray text-sm mt-1">Só o essencial — em seguida abrimos o WhatsApp.</p>
             </div>
             <form id="leadForm" onsubmit="submitLead(event)" class="space-y-4">
-                <input type="text" id="leadName" required placeholder="Nome Completo"
-                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
-                <input type="email" id="leadEmail" required placeholder="E-mail"
+                <input type="text" id="leadName" required placeholder="Seu nome" autocomplete="name"
                     class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
                 <input type="tel" id="leadPhone" required maxlength="15" placeholder="WhatsApp (00) 00000-0000"
+                    autocomplete="tel"
+                    class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
+                <input type="email" id="leadEmail" placeholder="E-mail (opcional)" autocomplete="email"
                     class="w-full px-4 py-3 rounded-xl border border-peau-rose/30 bg-peau-light outline-none text-peau-dark focus:border-peau-rose transition-colors">
                 <div class="flex items-start gap-2">
                     <input type="checkbox" id="lgpdConsent" required class="mt-1 accent-peau-rose cursor-pointer">
@@ -695,233 +829,17 @@
                 </div>
                 <button type="submit" id="submitLeadBtn" disabled
                     class="w-full bg-whatsapp hover:bg-whatsappdark disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold text-lg transition-all shadow-md">Continuar
-                    para o WhatsApp</button>
+                    no WhatsApp</button>
             </form>
+            <p class="text-center text-xs text-peau-gray mt-4">
+                Prefere só conversar?
+                <a href="#" class="text-peau-rose font-medium underline"
+                    onclick="closeLeadModal(); openWhatsApp(event, 'Olá! Prefiro tirar dúvidas pelo WhatsApp.', 'modal_skip')">Abrir WhatsApp direto</a>
+            </p>
         </div>
     </div>
 
-    <!-- Script de Gestão de UI e Atraso de Trackers (GTM / Facebook) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            const btnMobile = document.getElementById('mobile-menu-btn');
-            const menuMobile = document.getElementById('mobile-menu');
-            if (btnMobile && menuMobile) {
-                btnMobile.addEventListener('click', () => menuMobile.classList.toggle('hidden'));
-
-                // Fecha o menu mobile automaticamente ao clicar numa opção
-                const mobileLinks = menuMobile.querySelectorAll('a');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        menuMobile.classList.add('hidden');
-                    });
-                });
-            }
-
-            const phoneInput = document.getElementById('leadPhone');
-            if (phoneInput) {
-                phoneInput.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\D/g, "");
-                    if (value.length > 11) value = value.slice(0, 11);
-                    if (value.length > 10) {
-                        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
-                    } else if (value.length > 5) {
-                        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-                    } else if (value.length > 2) {
-                        value = value.replace(/^(\d{2})(\d{0,5}).*/, "($1) $2");
-                    } else if (value.length > 0) {
-                        value = value.replace(/^(\d{0,2}).*/, "($1");
-                    }
-                    e.target.value = value;
-                });
-            }
-
-            const lgpdCheckbox = document.getElementById('lgpdConsent');
-            if (lgpdCheckbox) {
-                lgpdCheckbox.addEventListener('change', function () {
-                    document.getElementById('submitLeadBtn').disabled = !this.checked;
-                });
-            }
-        });
-
-        function changeFontSize(s, r) {
-            let f = r ? 100 : (parseInt(localStorage.getItem('fontSize')) || 100) + s;
-            f = Math.max(85, Math.min(130, f));
-            document.documentElement.style.fontSize = f + '%';
-            localStorage.setItem('fontSize', f);
-        }
-
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-        }
-
-        function openLeadModal(e, m) {
-            if (e) e.preventDefault(); window.currentWaMsg = m;
-            document.getElementById('lead-modal').classList.replace('hidden', 'flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLeadModal() {
-            document.getElementById('lead-modal').classList.replace('flex', 'hidden');
-            document.body.style.overflow = '';
-        }
-
-        function submitLead(e) {
-            e.preventDefault();
-            const name = document.getElementById('leadName').value;
-            const email = document.getElementById('leadEmail').value;
-            const phone = document.getElementById('leadPhone').value;
-
-            const msg = `${window.currentWaMsg}\n\n*Dados do Contato:*\nNome: ${name}\nE-mail: ${email}\nWhatsApp: ${phone}`;
-            window.open(`https://wa.me/5511993092933?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
-            closeLeadModal();
-        }
-
-        // =========================================================================
-        // OTIMIZAÇÃO PAGESPEED: Carregamento Atrasado (Lazy Load) de Trackers
-        // =========================================================================
-        let scriptsCarregados = false;
-
-        function carregarScriptsTerceiros() {
-            if (scriptsCarregados) return;
-            scriptsCarregados = true;
-
-            // Injetar Google Tag Manager
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || []; w[l].push({
-                    'gtm.start':
-                        new Date().getTime(), event: 'gtm.js'
-                }); var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-PSBGFN7');
-
-            // Injetar Facebook Pixel
-            !function (f, b, e, v, n, t, s) {
-                if (f.fbq) return; n = f.fbq = function () {
-                    n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                };
-                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-                n.queue = []; t = b.createElement(e); t.async = !0;
-                t.src = v; s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s)
-            }(window, document, 'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1234567890'); // O SEU ID DO PIXEL AQUI
-            fbq('track', 'PageView');
-        }
-
-        ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function (evento) {
-            window.addEventListener(evento, carregarScriptsTerceiros, { once: true, passive: true });
-        });
-
-        setTimeout(carregarScriptsTerceiros, 3500);
-
-        // =========================================================================
-        // LAZY LOAD: GOOGLE PLACES API (AVALIAÇÕES)
-        // =========================================================================
-        const avaliacoesSection = document.getElementById('avaliacoes');
-        let googleScriptInjected = false;
-
-        if (avaliacoesSection && 'IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // Quando usuário chegar a 300px da seção, injetamos a API do Google
-                    if (entry.isIntersecting && !googleScriptInjected) {
-                        googleScriptInjected = true;
-                        const script = document.createElement('script');
-                        // ATENÇÃO: SUBSTITUA SUA_API_KEY_AQUI PELA SUA CHAVE DO GOOGLE CLOUD
-                        script.src = "https://maps.googleapis.com/maps/api/js?key=SUA_API_KEY_AQUI&libraries=places&callback=initGoogleReviews";
-                        script.async = true;
-                        script.defer = true;
-                        document.body.appendChild(script);
-                        observer.disconnect();
-                    }
-                });
-            }, { rootMargin: '300px' });
-            observer.observe(avaliacoesSection);
-        }
-
-        // Função chamada pelo Google Maps após carregar a API
-        window.initGoogleReviews = function() {
-            const request = {
-                // ATENÇÃO: SUBSTITUA SEU_PLACE_ID_AQUI PELO PLACE ID DA CLÍNICA
-                placeId: 'SEU_PLACE_ID_AQUI',
-                fields: ['name', 'rating', 'user_ratings_total', 'reviews']
-            };
-
-            const divVirtual = document.createElement('div');
-            const service = new google.maps.places.PlacesService(divVirtual);
-            
-            service.getDetails(request, (place, status) => {
-                const loader = document.getElementById('google-reviews-loader');
-                const container = document.getElementById('google-reviews-container');
-                
-                if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
-                    if (loader) loader.style.display = 'none';
-                    if (container) {
-                        container.classList.remove('hidden');
-                        
-                        // Renderizar no máximo 3 avaliações (estéticas p/ não poluir) das que possuem as maiores estrelas e texto mais longo
-                        const bestReviews = place.reviews
-                            .filter(r => r.rating >= 4 && r.text && r.text.length > 20)
-                            .sort((a, b) => b.rating - a.rating || b.text.length - a.text.length)
-                            .slice(0, 3);
-                        
-                        let html = '';
-                        bestReviews.forEach(review => {
-                            const starsHtml = Array(5).fill(0).map((_, i) => 
-                                `<i data-lucide="star" class="w-4 h-4 ${i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}"></i>`
-                            ).join('');
-                            
-                            // fallback avatar em caso de erro da url de imagem do google
-                            const photoUrl = review.profile_photo_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(review.author_name) + '&background=fce7f3&color=9d174d';
-                            
-                            html += `
-                            <div class="bg-peau-card dark:bg-peau-light p-6 rounded-3xl border border-peau-rose/10 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                                <div class="flex items-center gap-4 mb-5">
-                                    <img src="${photoUrl}" alt="${review.author_name}" loading="lazy" class="w-12 h-12 rounded-full object-cover shadow-sm bg-white" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(review.author_name)}&background=fce7f3&color=9d174d'">
-                                    <div>
-                                        <h5 class="font-bold text-peau-dark text-sm">${review.author_name}</h5>
-                                        <div class="flex mt-1">${starsHtml}</div>
-                                    </div>
-                                </div>
-                                <p class="text-peau-gray text-sm leading-relaxed flex-grow italic font-medium">"${review.text}"</p>
-                                <div class="mt-4 pt-4 border-t border-peau-rose/5 flex items-center gap-2">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="w-4 h-4 grayscale opacity-50">
-                                    <span class="text-xs text-peau-gray/60 font-semibold tracking-wider uppercase">Google Review</span>
-                                </div>
-                            </div>
-                            `;
-                        });
-                        
-                        container.innerHTML = html;
-                        
-                        // Atualizar ícones lucide novos
-                        if (typeof lucide !== 'undefined') {
-                            lucide.createIcons();
-                        }
-
-                        // Fade-in effect
-                        requestAnimationFrame(() => {
-                            container.classList.remove('opacity-0');
-                            container.classList.add('opacity-100');
-                        });
-                    }
-                } else {
-                    // Erro: mostrar fallback
-                    if (loader) {
-                        loader.innerHTML = '<div class="p-6 bg-red-50 text-red-600 rounded-xl border border-red-100 text-sm font-medium">As avaliações do Google ainda não estão configuradas corretamente. (Chave API ou Place ID faltando)</div>';
-                    }
-                }
-            });
-        };
-    </script>
+    <script src="/assets/js/conversion.js?v=1" defer></script>
 </body>
 
 </html>
