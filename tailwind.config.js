@@ -19,8 +19,9 @@ module.exports = {
           card: 'rgb(var(--color-peau-card) / <alpha-value>)',
           inverse: 'rgb(var(--color-peau-inverse) / <alpha-value>)',
         },
-        whatsapp: '#128C7E',
-        whatsappdark: '#0E6B5F'
+        /* Verde oficial WhatsApp — reconhecimento imediato da marca */
+        whatsapp: '#25D366',
+        whatsappdark: '#1EBE57'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
