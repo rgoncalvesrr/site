@@ -1,0 +1,12 @@
+---
+description: Fluxo git — develop para desenvolvimento, main só produção
+alwaysApply: true
+---
+
+# Fluxo de branches
+
+- **`main`**: produção apenas. Nunca faça commit, amend ou push direto em `main`.
+- **`develop`**: branch padrão de desenvolvimento. Todo trabalho novo começa aqui (ou em feature branches derivadas de `develop`).
+- Produção: merge/PR de `develop` → `main`, depois deploy a partir de `main`.
+- Features: `cursor/...` ou `feature/...` a partir de `develop`; PR para `develop`.
+- Se estiver em `main` por engano, mude para `develop` antes de qualquer commit.
